@@ -1,0 +1,267 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-size: 15px;
+	font-family: 'Ubuntu', sans-serif;
+	background-image: url("../img/fondo.png");
+	background-repeat: no-repeat;
+	background-size: cover !important;
+	background-attachment: fixed;
+	width: 100% !important;
+}
+
+.contenedor{
+	/* color: #f3f3f3; */
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+}
+
+.letras{
+	color: #1e1e1e;
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+}
+
+.actual{
+	color: coral;
+}
+
+.ul{
+	padding: 0;
+	margin: 0;
+}
+
+.boton1{
+	height: 38px;
+	background: #E8491D;
+	border: 0;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #ffffff;
+}
+
+/*encabezado*/
+header{
+	background-color: #24282b;
+	color: #ffffff;
+	padding-top: 30px;
+	min-height: 70px;
+	border-bottom: 5px solid #1283d4;
+	position: sticky;
+	z-index: 999;
+}
+
+/* La clase pegajosa se agrega a
+el encabezado con JS cuando llega
+su posición de desplazamiento */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Agregue un poco de relleno superior
+a la página contenido para evitar movimientos
+rápidos y repentinos (a medida que el encabezado
+obtiene una nueva posición en la parte
+superior de la página
+(posición: fija y superior: 0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+
+header a{
+	color: #ffffff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+
+header li{
+	float: left;
+	display: inline;
+	padding-top: 0;
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
+header #marca{
+	float: left;
+}
+
+header #marca h1{
+	margin: 0px;
+}
+
+nav{
+	float: right;
+	margin-top: 10px;
+}
+
+header .actual a{
+	color: #1293D4;
+	font-weight: bold;
+}
+
+header .resaltado{
+	color: #1293D4;
+	font-weight: bold;
+}
+
+header a:hover{
+	color: #cccccc;
+	font-weight: bold;
+}
+
+/* cabecera */
+#cabecera{
+	min-height: 400px;
+	background: url("../img/cabecera.jpg") no-repeat;
+	background-position: 0;
+	text-align: center;
+	color: #ffffff;
+}
+
+#cabecera h1{
+	margin-top: 100px;
+	font-size: 55px;
+	margin-bottom: 100px;
+}
+
+#cabecera p{
+	font-size: 20px;
+	margin-bottom: 80px;
+}
+
+#boletin{
+	padding: 15px;
+	color: #ffffff;
+	background: #24282B;
+}
+
+#boletin h1{
+	float: left;
+}
+
+#boletin form{
+	margin-top: 15px;
+	float: right;
+}
+
+#boletin input[type="email"]{
+	height: 25px;
+	width: 250px;
+	padding: 4px;
+}
+
+/* Cajas */
+#cajas{
+	margin-top: 20px;
+}
+
+#cajas .caja{
+	float: left;
+	text-align: center;
+	width: 30%;
+}
+
+#cajas .caja img{
+	width: 150px;
+}
+
+/* lateral */
+aside#lateral{
+  float: right;
+  width: 30%;
+  margin-top: 20px;
+}
+
+.oscuro{
+  background-color:#35424a;
+  padding: 25px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* main-col*/
+article#main-col{
+  float: left;
+  width: 65%;
+}
+
+/* Servicos */
+ul#servicios li{
+  background-color: #e6e6e6;
+  list-style: none;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+}
+
+footer{
+	background: #1283d4;
+	color: #ffffff;
+	text-align: center;
+	padding: 5px;
+	font-weight: bold;
+}
+
+/* Contacto */
+input, textarea{
+  width: 100%;
+  height: 35px;
+  border: 1px solid gray;
+  margin-bottom: 5px;
+}
+
+textarea{
+  height: 120px;
+}
+
+input[type="submit"]{
+  background-color: #e8491d;
+  color: white;
+}
+
+
+/* Media queris */
+@media(max-width: 768px){
+  header #marca,
+  header nav,
+  header nav li,
+  #boletin h1,
+  #boletin form,
+  #cajas .caja,
+  article#main-col,
+  aside#lateral{
+      float: none;
+      text-align: center;
+      width: 100%;
+    }
+    header{
+      padding-bottom: 20px;
+    }
+
+    #boletin h1{
+      margin-top: 40px;
+    }
+
+    #boletin button{
+      display: block;
+      width: 100%;
+    }
+
+    #boletin form input[type="email"]{
+      width: 100%;
+      margin-bottom: 5px;
+    }
+
+    input, textarea{
+      width: 98%;
+    }
+
+}
