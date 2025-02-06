@@ -13,7 +13,6 @@
 		:root {
 			/* Colores */
 			--color-accent: #f39c12;
-
 			--color-bg: #111;
 			--color-bg-secondary: #111111;
 			--color-text: #fff;
@@ -55,10 +54,10 @@
 			--color-text: #111;
 			--color-overlay: rgba(246, 246, 246, 0.65);
 
-			/* Sombras y transiciones */
 			--shadow-header: 0 2px 4px rgba(0, 0, 0, 0.5);
 			--shadow-card: 0px 1px 3px rgba(0, 0, 0, 0.6);
 			--shadow-hover: 0 5px 5px var(--color-accent);
+
 			--transition-base: all 0.3s ease;
 			--border-radius: 8px;
 		}
@@ -233,6 +232,7 @@
 			background-image: var(--bg-contact);
 		}
 
+		/* Efecto “humo” en el fondo de cada sección (similar al color del tema) */
 		section::after {
 			content: "";
 			position: absolute;
@@ -246,7 +246,6 @@
 			transform: translateY(0%);
 			z-index: 0;
 		}
-
 
 		.section-overlay {
 			background: var(--color-overlay);
@@ -531,7 +530,6 @@
 		/* =======================================
        11. SMOOTH EFFECT ENTRE IMÁGENES
     ========================================== */
-		/* Para aplicar el efecto smooth, envuelve las imágenes en un contenedor con la clase "image-container" */
 		.image-container {
 			position: relative;
 			overflow: hidden;
@@ -561,10 +559,164 @@
 		.image-container:hover::after {
 			opacity: 1;
 		}
+
+		/* =======================================
+       12. REDES SOCIALES & INDICADORES DE SECCIÓN
+    ========================================== */
+		.social-sidebar {
+			position: fixed;
+			top: 50%;
+			left: 20px;
+			transform: translateY(-50%);
+			z-index: 1100;
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+
+		.social-sidebar a {
+			color: white;
+			background: transparent;
+			padding: 10px;
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: background 0.3s, transform 0.3s;
+			position: relative;
+		}
+
+		.social-sidebar a:hover {
+			background: transparent;
+			transform: translateX(10px);
+		}
+
+		.social-sidebar a::after {
+			content: attr(data-title);
+			position: absolute;
+			left: 40px;
+			color: #fff;
+			padding: 5px 10px;
+			border-radius: 5px;
+			opacity: 0;
+			transform: translateX(-10px);
+			transition: opacity 0.3s, transform 0.3s;
+			white-space: nowrap;
+			pointer-events: none;
+		}
+
+		.social-sidebar a:hover::after {
+			opacity: 1;
+			transform: translateX(0);
+		}
+
+		.social-sidebar a.right:hover {
+			transform: translateX(-10px);
+		}
+
+		.social-sidebar a.right::after {
+			left: auto;
+			right: 520px;
+			transform: translateX(10px);
+		}
+
+		.social-sidebar a.right:hover::after {
+			transform: translateX(0);
+		}
+
+
+		.section-indicators {
+			position: fixed;
+			top: 50%;
+			right: 20px;
+			transform: translateY(-50%);
+			z-index: 1100;
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.indicator {
+			color: var(--color-text);
+			background: var(--color-bg-secondary);
+			padding: 5px;
+			border-radius: 50%;
+			text-align: center;
+			width: 40px;
+			height: 40px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: background 0.3s;
+			position: relative;
+		}
+
+		.indicator:hover {
+			background: var(--color-accent);
+			transform: scale(1.1);
+			color: #fff;
+		}
+
+		/* Estilos para el tooltip */
+		.indicator::after {
+			content: attr(data-tooltip);
+			position: absolute;
+			top: 50%;
+			right: 40px;
+			transform: translateY(-50%);
+			background-color: transparent;
+			color: #fff;
+			padding: 5px 10px;
+			border-radius: 4px;
+			white-space: nowrap;
+			opacity: 0;
+			transition: opacity 0.3s;
+			pointer-events: none;
+		}
+
+		.indicator:hover::after {
+			opacity: 1;
+		}
 	</style>
 </head>
 
 <body>
+	<!-- REDES SOCIALES (barra lateral izquierda) -->
+	<div class="social-sidebar">
+		<a href="https://linkedin.com" target="_blank" data-title="Linkedin">
+			<img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="Linkedin">
+		</a>
+		<a href="https://discord.com" target="_blank" data-title="Discord">
+			<img src="https://img.icons8.com/color/48/000000/discord.png" alt="Facebook">
+		</a>
+		<a href="https://facebook.com" target="_blank" data-title="Facebook">
+			<img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook">
+		</a>
+		<a href="https://twitter.com" target="_blank" data-title="Twitter">
+			<img src="https://img.icons8.com/color/48/000000/twitter--v1.png" alt="Twitter">
+		</a>
+		<a href="https://instagram.com" target="_blank" data-title="Instagram">
+			<img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram">
+		</a>
+	</div>
+
+
+	<!-- INDICADORES DE SECCIÓN (barra lateral derecha) -->
+	<div class="section-indicators">
+		<a href="#hero" class="indicator" data-tooltip="Inicio">⦿</a>
+		<a href="#about" class="indicator" data-tooltip="Acerca de mí">⦿</a>
+		<a href="#experience" class="indicator" data-tooltip="Experiencia">⦿</a>
+		<a href="#skills" class="indicator" data-tooltip="Habilidades">⦿</a>
+		<a href="#education" class="indicator" data-tooltip="Educación">⦿</a>
+		<a href="#portfolio" class="indicator" data-tooltip="Portafolio">⦿</a>
+		<a href="#services" class="indicator" data-tooltip="Servicios">⦿</a>
+		<a href="#testimonials" class="indicator" data-tooltip="Testimonios">⦿</a>
+		<a href="#contact" class="indicator" data-tooltip="Contacto">⦿</a>
+	</div>
+
+
 	<!-- HEADER Y NAVEGACIÓN -->
 	<header>
 		<div class="logo">Ronal A. Alvarado V.</div>
@@ -606,7 +758,6 @@
 						experiencias interactivas y soluciones innovadoras para empresas y emprendedores. Siempre en
 						búsqueda de nuevos retos y aprendizaje continuo.</p>
 				</div>
-				<!-- Se agrega la clase "image-container" para aplicar el smooth effect -->
 				<div class="about-img image-container">
 					<img src="https://source.unsplash.com/400x300/?developer,3d" alt="Perfil Profesional">
 				</div>
@@ -789,7 +940,7 @@
 	</div>
 
 	<!-- =======================================
-       12. SCRIPTS: THREE.JS, PARALLAX, ANIMACIONES & SISTEMA DE MOVIMIENTO DE LA MASCOTA
+       13. SCRIPTS: THREE.JS, PARALLAX, ANIMACIONES, INDICADORES & SISTEMA DE MOVIMIENTO DE LA MASCOTA
   ========================================== -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 	<script>
@@ -897,17 +1048,23 @@
 		requestAnimationFrame(updatePet);
 
 		/* INTERSECTION OBSERVER PARA ANIMAR SECCIONES */
-		const observer = new IntersectionObserver(entries => {
+		const sections = document.querySelectorAll('section');
+		const indicators = document.querySelectorAll('.section-indicators .indicator');
+
+		const observerOptions = { threshold: 0.6 };
+		const sectionObserver = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
 				if (entry.isIntersecting) {
-					entry.target.style.opacity = 1;
-					entry.target.style.transform = 'translateY(0)';
+					indicators.forEach(indicator => {
+						indicator.classList.remove('active');
+						if (indicator.getAttribute('href') === '#' + entry.target.id) {
+							indicator.classList.add('active');
+						}
+					});
 				}
 			});
-		}, { threshold: 0.3 });
-		document.querySelectorAll('.section-overlay').forEach(section => {
-			observer.observe(section);
-		});
+		}, observerOptions);
+		sections.forEach(section => sectionObserver.observe(section));
 
 		/* BOTÓN "SCROLL TO TOP" */
 		const scrollToTopBtn = document.getElementById('scrollToTop');
