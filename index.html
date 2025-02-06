@@ -1,88 +1,463 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>SENATI-Ingenería de Software con IA</title>
-	<link rel="stylesheet" type="text/css" href="css/estilo.css">
-    <meta name="keywords" content="diseño web,desarrollo web">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Diseño y desarrollo web SENATI">
-    <meta name="author" content="Alvarado Vega">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+	<title>Portafolio Moderno SENATI</title>
+	<meta name="description"
+		content="Portafolio moderno de SENATI: Innovación, creatividad y tecnología en cada proyecto.">
+	<meta name="keywords" content="portafolio, diseño web, 3D, animaciones, tecnología, SENATI">
+	<meta name="author" content="Alvarado Vega">
+	<!-- Bootstrap CSS -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<!-- AOS Animation -->
+	<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+	<style>
+		body {
+			font-family: 'Montserrat', sans-serif;
+			background: #121212;
+			color: #e0e0e0;
+			overflow-x: hidden;
+		}
+
+		/* Header con efecto glass */
+		header {
+			background: rgba(0, 0, 0, 0.6);
+			backdrop-filter: blur(10px);
+			position: fixed;
+			width: 100%;
+			z-index: 1000;
+		}
+
+		header .navbar {
+			padding: 1rem 0;
+		}
+
+		header .navbar-brand {
+			font-weight: 700;
+			color: #39FF14;
+		}
+
+		header .nav-link {
+			color: #e0e0e0;
+			transition: color 0.3s;
+		}
+
+		header .nav-link:hover {
+			color: #39FF14;
+		}
+
+		/* HERO con animación 3D */
+		#hero {
+			position: relative;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			background: radial-gradient(circle at center, #1e1e1e, #121212);
+			overflow: hidden;
+		}
+
+		#hero .hero-shape {
+			position: absolute;
+			width: 300px;
+			height: 300px;
+			background: linear-gradient(45deg, transparent, #39FF14);
+			border-radius: 50%;
+			filter: blur(50px);
+			animation: rotateShape 20s linear infinite;
+		}
+
+		@keyframes rotateShape {
+			from {
+				transform: rotate(0deg);
+			}
+
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		#hero .hero-content {
+			position: relative;
+			z-index: 2;
+		}
+
+		#hero h1 {
+			font-size: 4rem;
+			margin-bottom: 20px;
+		}
+
+		#hero p {
+			font-size: 1.5rem;
+			margin-bottom: 30px;
+		}
+
+		#hero .btn-hero {
+			background: #39FF14;
+			border: none;
+			padding: 15px 30px;
+			font-size: 1.1rem;
+			font-weight: bold;
+			color: #121212;
+			border-radius: 50px;
+			transition: transform 0.3s;
+		}
+
+		#hero .btn-hero:hover {
+			transform: scale(1.1);
+		}
+
+		/* Sección de títulos */
+		.section-title {
+			font-size: 2.5rem;
+			text-align: center;
+			margin-bottom: 40px;
+			position: relative;
+		}
+
+		.section-title::after {
+			content: '';
+			width: 80px;
+			height: 3px;
+			background: #39FF14;
+			position: absolute;
+			bottom: -10px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		/* Sección Sobre Mí */
+		#about {
+			padding: 80px 20px;
+			background: #1e1e1e;
+		}
+
+		#about .about-img {
+			width: 100%;
+			border-radius: 10px;
+			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+		}
+
+		#about .about-text {
+			font-size: 1.1rem;
+			line-height: 1.8;
+		}
+
+		/* Sección Portafolio */
+		#portfolio {
+			padding: 80px 20px;
+			background: #121212;
+		}
+
+		#portfolio .card {
+			background: #1e1e1e;
+			border: none;
+			border-radius: 10px;
+			overflow: hidden;
+			transition: transform 0.3s, box-shadow 0.3s;
+		}
+
+		#portfolio .card:hover {
+			transform: scale(1.05);
+			box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+		}
+
+		#portfolio .card-img-top {
+			transition: transform 0.3s;
+		}
+
+		#portfolio .card:hover .card-img-top {
+			transform: scale(1.1);
+		}
+
+		/* Sección Habilidades */
+		#skills {
+			padding: 80px 20px;
+			background: #1e1e1e;
+		}
+
+		#skills .progress {
+			background: #333;
+			border-radius: 20px;
+			height: 20px;
+		}
+
+		#skills .progress-bar {
+			background: #39FF14;
+		}
+
+		/* Sección Testimonios */
+		#testimonials {
+			padding: 80px 20px;
+			background: #121212;
+		}
+
+		#testimonials .testimonial-card {
+			background: #1e1e1e;
+			border: none;
+			border-radius: 10px;
+			padding: 20px;
+			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+		}
+
+		/* Sección Contacto */
+		#contact {
+			padding: 80px 20px;
+			background: #1e1e1e;
+		}
+
+		#contact .form-control {
+			background: #333;
+			border: none;
+			color: #e0e0e0;
+		}
+
+		#contact .form-control:focus {
+			background: #333;
+			border-color: #39FF14;
+			box-shadow: none;
+		}
+
+		#contact .btn-contact {
+			background: #39FF14;
+			border: none;
+			padding: 12px 30px;
+			font-size: 1rem;
+			color: #121212;
+			border-radius: 50px;
+			transition: transform 0.3s;
+		}
+
+		#contact .btn-contact:hover {
+			transform: scale(1.05);
+		}
+
+		/* Footer */
+		footer {
+			background: #000;
+			padding: 20px;
+			text-align: center;
+			color: #777;
+		}
+	</style>
 </head>
+
 <body>
-	<header class="header" id="myHeader">
-		<div class="contenedor">
-			<div id="marca">
-				<h1 align="center"><span class="resaltado"> SENATI</span> Diseño y Desarrollo Web</h1>
+	<!-- Header -->
+	<header>
+		<nav class="navbar navbar-expand-lg">
+			<div class="container">
+				<a class="navbar-brand" href="#">SENATI</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+					aria-controls="navbarContent" aria-expanded="false" aria-label="Menú">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navbarContent">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+						<li class="nav-item"><a class="nav-link" href="#about">Sobre Mí</a></li>
+						<li class="nav-item"><a class="nav-link" href="#portfolio">Proyectos</a></li>
+						<li class="nav-item"><a class="nav-link" href="#skills">Habilidades</a></li>
+						<li class="nav-item"><a class="nav-link" href="#testimonials">Testimonios</a></li>
+						<li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+					</ul>
+				</div>
 			</div>
-			<nav>
-				<ul>
-					<li class="actual">
-						<a href="index.html">Inicio</a></li>
-					<li>
-						<a href="nosotros.html">Nosotros</a></li>
-					<li>
-						<a href="servicios.html">Servicios</a></li>
-					<li>
-						<a href="contacto.html">Contactos</a></li>	
-				</ul>
-			</nav>
-		</div>
+		</nav>
 	</header>
-	<section id="cabecera">
-		<div class="contenedor">
-			<h1> Profesionales Expertos en Tecnología Web</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+	<!-- Hero Section -->
+	<section id="hero">
+		<div class="hero-shape"></div>
+		<div class="container hero-content" data-aos="fade-up">
+			<h1 class="animate__animated animate__fadeInDown">Bienvenido a mi Mundo Digital</h1>
+			<p class="animate__animated animate__fadeInUp">Innovación, creatividad y tecnología fusionadas en cada
+				proyecto.</p>
+			<a href="#portfolio" class="btn btn-hero animate__animated animate__zoomIn">Explora Mi Trabajo</a>
 		</div>
 	</section>
 
-	<section id="boletin">
-		<div class ="contenedor">
-			<h1>Suscribete a nuestro boletín</h1>
-			<form>
-				<input type="email" placeholder="Ingrese el email...">
-				<button type ="submit" class="boton1">Suscribete</button> 
-
-			</form>
+	<!-- Sobre Mí -->
+	<section id="about">
+		<div class="container" data-aos="fade-right">
+			<h2 class="section-title">Sobre Mí</h2>
+			<div class="row align-items-center">
+				<div class="col-md-5">
+					<img src="img/about.jpg" alt="Sobre Mí" class="about-img img-fluid">
+				</div>
+				<div class="col-md-7">
+					<p class="about-text">
+						Soy un profesional apasionado por la tecnología y el diseño digital. Con más de 5 años de
+						experiencia, combino creatividad e innovación para transformar ideas en experiencias visuales
+						impactantes. Mi formación en SENATI me ha permitido dominar herramientas modernas y técnicas
+						avanzadas para crear proyectos que marcan la diferencia.
+					</p>
+					<ul class="list-unstyled">
+						<li><i class="fas fa-check text-success"></i> Desarrollo Web y Móvil</li>
+						<li><i class="fas fa-check text-success"></i> Diseño 3D y Animación</li>
+						<li><i class="fas fa-check text-success"></i> Estrategia Digital</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-	</section> 
-	
-	<section id="cajas">
-        <div class="letras">
-         <div class="caja">
-            <img src="img/logo_html.png" alt="logo_html">
-                <h3>HTML</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit voluptatibus perspiciatis nam ad nihil aliquam, similique assumenda possimus tempora ab officia obcaecati sapiente at? Quasi soluta tenetur facere aspernatur laudantium.</p>
-               
-            </img>
-         </div>
-         <div class="caja">
-            <img src="img/logo_css.png" alt="logo_css">
-                <h3>CSS</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sed harum ut nihil vero odit, ipsum asperiores incidunt delectus, temporibus similique nobis. Placeat at commodi maxime, minima dolor odio ipsam.</p>    
-            </img>
-         </div>
-         <div class="caja">
-            <img src="img/logo_brush.png" alt="logo_brush">
-                <h3>Diseño Grafico</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, quos quam repellendus fugiat sint distinctio suscipit! Magni inventore, laborum dolorum ad excepturi laudantium asperiores rem qui quidem magnam veritatis maiores.</p>    
-            </img>
-         </div>
-        </div>
-    </section>
+	</section>
 
-<footer>
-    <p>SENATI Desarrollo Web, Copyright &copy; 2023</p>
-</footer>
+	<!-- Portafolio -->
+	<section id="portfolio">
+		<div class="container" data-aos="fade-up">
+			<h2 class="section-title">Proyectos Destacados</h2>
+			<div class="row g-4">
+				<div class="col-md-4">
+					<div class="card">
+						<img src="img/proyecto1.jpg" class="card-img-top" alt="Proyecto 1">
+						<div class="card-body">
+							<h5 class="card-title">Proyecto Innovador 1</h5>
+							<p class="card-text">Solución web interactiva con animaciones 3D.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<img src="img/proyecto2.jpg" class="card-img-top" alt="Proyecto 2">
+						<div class="card-body">
+							<h5 class="card-title">Proyecto Innovador 2</h5>
+							<p class="card-text">Aplicación móvil con diseño futurista.</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="card">
+						<img src="img/proyecto3.jpg" class="card-img-top" alt="Proyecto 3">
+						<div class="card-body">
+							<h5 class="card-title">Proyecto Innovador 3</h5>
+							<p class="card-text">Experiencia inmersiva con efectos visuales impactantes.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
+	<!-- Habilidades -->
+	<section id="skills">
+		<div class="container" data-aos="fade-left">
+			<h2 class="section-title">Habilidades</h2>
+			<div class="row">
+				<div class="col-md-6">
+					<h5>Desarrollo Web</h5>
+					<div class="progress mb-3">
+						<div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90"
+							aria-valuemin="0" aria-valuemax="100">90%</div>
+					</div>
+					<h5>Diseño 3D &amp; Animación</h5>
+					<div class="progress mb-3">
+						<div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85"
+							aria-valuemin="0" aria-valuemax="100">85%</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h5>Aplicaciones Móviles</h5>
+					<div class="progress mb-3">
+						<div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80"
+							aria-valuemin="0" aria-valuemax="100">80%</div>
+					</div>
+					<h5>Estrategia Digital</h5>
+					<div class="progress mb-3">
+						<div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75"
+							aria-valuemin="0" aria-valuemax="100">75%</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Testimonios -->
+	<section id="testimonials">
+		<div class="container" data-aos="fade-up">
+			<h2 class="section-title">Testimonios</h2>
+			<div class="row g-4">
+				<div class="col-md-4">
+					<div class="testimonial-card">
+						<p>"El trabajo realizado superó todas mis expectativas, una verdadera obra de arte digital."</p>
+						<h6>Cliente A</h6>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="testimonial-card">
+						<p>"Profesionalismo y creatividad en cada detalle. Recomiendo ampliamente sus servicios."</p>
+						<h6>Cliente B</h6>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="testimonial-card">
+						<p>"Una experiencia transformadora, con resultados que hablan por sí mismos."</p>
+						<h6>Cliente C</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contacto -->
+	<section id="contact">
+		<div class="container" data-aos="fade-up">
+			<h2 class="section-title">Contacto</h2>
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<form>
+						<div class="mb-3">
+							<input type="text" class="form-control" placeholder="Nombre" required>
+						</div>
+						<div class="mb-3">
+							<input type="email" class="form-control" placeholder="Correo Electrónico" required>
+						</div>
+						<div class="mb-3">
+							<textarea class="form-control" rows="4" placeholder="Mensaje" required></textarea>
+						</div>
+						<div class="text-center">
+							<button type="submit" class="btn btn-contact">Enviar Mensaje</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<p>&copy; 2023 SENATI Portafolio. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<!-- Bootstrap Bundle with Popper -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- AOS Animation -->
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init({ duration: 1000, once: true });
+
+		// Smooth scroll para enlaces ancla
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', e => {
+				e.preventDefault();
+				document.querySelector(anchor.getAttribute('href')).scrollIntoView({
+					behavior: 'smooth'
+				});
+			});
+		});
+	</script>
 </body>
+
 </html>
