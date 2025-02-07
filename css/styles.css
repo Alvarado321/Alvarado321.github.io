@@ -1,0 +1,700 @@
+/* ==========================================================
+1. VARIABLES & TEMAS (COLORES, TIPOS, SOMBRAS, TRANSICIONES)
+=========================================================== */
+:root {
+    /* Colores */
+    --color-accent: #f39c12;
+    --color-bg: #111;
+    --color-bg-secondary: #111111;
+    --color-text: #fff;
+    --color-overlay: rgba(30, 30, 30, 0.65);
+
+    /* Tipografías y tamaños */
+    --font-family: "Roboto", sans-serif;
+    --font-size-base: 16px;
+    --font-size-h1: 48px;
+    --font-size-h2: 36px;
+    --font-size-h3: 28px;
+    --font-size-text: 14px;
+    --font-size-button: 16px;
+
+    /* Sombras y transiciones */
+    --shadow-header: 0px 1px 3px rgba(255, 187, 0, 0.5);
+    --shadow-card: 0px 1px 3px rgba(183, 183, 183, 0.6);
+    --shadow-hover: 0px 5px 5px var(--color-accent);
+    --transition-base: all 0.3s ease;
+    --border-radius: 8px;
+
+    /* ================================
+2. VARIABLES DE IMÁGENES (FONDOS)
+================================= */
+    --bg-hero: url("https://i.pinimg.com/originals/27/d4/8c/27d48cf055551b3b8ac8a6b38d2bc4de.gif");
+    --bg-about: url("");
+    --bg-experience: url("https://i.pinimg.com/originals/ca/26/2e/ca262e0354eea311c41134c3e4bc3bc2.gif");
+    --bg-skills: url("");
+    --bg-education: url("https://img.freepik.com/fotos-premium/ilustracion-pixel-art-laboratorio-ciencias_36682-108353.jpg");
+    --bg-portfolio: url("");
+    --bg-services: url("https://img0.reactor.cc/pics/post/1Eni1-Pixel-Gif-Pixel-Art-%D0%B7%D0%B8%D0%BC%D0%B0-4972436.gif");
+    --bg-testimonials: url("");
+    --bg-contact: url("");
+}
+
+/* MODO CLARO */
+body.white-mode {
+    --color-bg: #fff;
+    --color-bg-secondary: #f1f1f1;
+    --color-text: #111;
+    --color-overlay: rgba(246, 246, 246, 0.65);
+
+    --shadow-header: 0 2px 4px rgba(0, 0, 0, 0.5);
+    --shadow-card: 0px 1px 3px rgba(0, 0, 0, 0.6);
+    --shadow-hover: 0 5px 5px var(--color-accent);
+
+    --transition-base: all 0.3s ease;
+    --border-radius: 8px;
+}
+
+/* =======================
+3. RESETEO & BASE GLOBAL
+======================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: var(--font-size-base);
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==================================
+4. ANIMACIONES & EFECTOS (GENERAL)
+=================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fallBounce {
+    0% {
+        transform: translate(-50%, -100vh);
+        opacity: 0;
+    }
+
+    60% {
+        transform: translate(-50%, 0);
+    }
+
+    75% {
+        transform: translate(-50%, calc(-50% + 15px));
+    }
+
+    100% {
+        transform: translate(-50%, calc(-50% + 15px));
+        opacity: 1;
+    }
+}
+
+/* ======================
+5. HEADER & NAVEGACIÓN
+======================= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--color-bg-secondary);
+    padding: 15px 30px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-header);
+}
+
+header .logo {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-accent);
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu ul li {
+    margin-left: 25px;
+}
+
+.nav-menu ul li a,
+.nav-menu ul li button {
+    font-weight: 500;
+    color: var(--color-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+    font-size: var(--font-size-button);
+}
+
+.nav-menu ul li a:hover,
+.nav-menu ul li button:hover {
+    color: var(--color-accent);
+}
+
+/* =========================================================
+6. SECCIONES Y FONDOS CON PARALLAX + EFECTO DE TRANSICIÓN
+========================================================== */
+section {
+    padding: 100px 20px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Uso de variables para fondos de secciones */
+#hero {
+    background: var(--bg-hero) center/cover;
+}
+
+#about {
+    background-image: var(--bg-about);
+}
+
+#experience {
+    background-image: var(--bg-experience);
+}
+
+#skills {
+    background-image: var(--bg-skills);
+}
+
+#education {
+    background-image: var(--bg-education);
+}
+
+#portfolio {
+    background-image: var(--bg-portfolio);
+}
+
+#services {
+    background-image: var(--bg-services);
+}
+
+#testimonials {
+    background-image: var(--bg-testimonials);
+}
+
+#contact {
+    background-image: var(--bg-contact);
+}
+
+/* Efecto de transición en secciones */
+section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: radial-gradient(ellipse at center,
+            var(--color-accent) 10%,
+            transparent 80%);
+    filter: blur(5px);
+    opacity: 0.7;
+    transform: translateY(0%);
+    z-index: 0;
+}
+
+/* Overlay para contenido de secciones */
+.section-overlay,
+.section-overlay-about {
+    background: var(--color-overlay);
+    padding: 60px 20px;
+    border-radius: var(--border-radius);
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+    position: relative;
+    z-index: 1;
+}
+
+.section-overlay-about {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* ===============
+7. SECCIÓN HERO
+================ */
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fallBounce 1s ease-out;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: 20px;
+    color: white;
+}
+
+.hero-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.btn {
+    padding: 12px 30px;
+    background: var(--color-accent);
+    color: white;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #d35400;
+}
+
+/* ==================================================================================
+8. CONTENIDO DE SECCIONES (Acerca, Experiencia, Habilidades, Educación, Portafolio,
+Servicios, Testimonios, Contacto)
+=================================================================================== */
+.about-content,
+.card-grid,
+.portfolio-grid,
+.services-grid,
+.testimonials-grid {
+    display: grid;
+    gap: 20px;
+    margin-top: 40px;
+    padding: 60px 30px;
+}
+
+.about-content {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    text-align: left;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+}
+
+.about-img img,
+.card img,
+.portfolio-item img {
+    width: 100%;
+    border-radius: var(--border-radius);
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.about-img img:hover {
+    transform: scale(1.05);
+}
+
+.card,
+.portfolio-item,
+.service-card,
+.testimonial {
+    background: var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-base);
+}
+
+.card:hover,
+.portfolio-item:hover,
+.service-card:hover,
+.testimonial:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card-content {
+    padding: 15px;
+    text-align: left;
+}
+
+.card-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: var(--font-size-text);
+    line-height: 1.4;
+}
+
+.service-card,
+.testimonial {
+    padding: 20px;
+    text-align: center;
+}
+
+.service-card h3 {
+    margin-bottom: 10px;
+    color: var(--color-accent);
+}
+
+.service-card p,
+.testimonial p {
+    font-size: var(--font-size-text);
+}
+
+.testimonial p {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.testimonial span {
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: auto;
+    text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ==================================
+9. FOOTER, MASCOTA Y SCROLL TO TOP
+=================================== */
+footer {
+    background: var(--color-bg-secondary);
+    padding: 20px;
+    text-align: center;
+    font-size: var(--font-size-text);
+    color: var(--color-text);
+}
+
+.mascota {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1500;
+    pointer-events: auto;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.1s linear;
+}
+
+.mascota .layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#scrollToTop {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background: var(--color-accent);
+    color: var(--color-text);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    font-size: 24px;
+    transition: var(--transition-base);
+    color: white;
+}
+
+/* ==============
+10. RESPONSIVE
+=============== */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--color-bg-secondary);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 30px;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu ul li {
+        margin: 15px 0;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    header {
+        flex-direction: row;
+        padding: 15px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: var(--font-size-h2);
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
+}
+
+/* ================================
+11. SMOOTH EFFECT ENTRE IMÁGENES
+================================= */
+.image-container {
+    position: relative;
+    overflow: visible;
+    height: auto;
+}
+
+.image-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease;
+    filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
+    opacity: 0.95;
+    background-blend-mode: darken;
+}
+
+/* ===========================================
+12. REDES SOCIALES & INDICADORES DE SECCIÓN
+============================================ */
+.social-sidebar {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social-sidebar a {
+    color: white;
+    background: transparent;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, transform 0.3s;
+    position: relative;
+}
+
+.social-sidebar a:hover {
+    background: transparent;
+    transform: translateX(10px);
+}
+
+.social-sidebar a::after {
+    content: attr(data-title);
+    position: absolute;
+    left: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.social-sidebar a:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.social-sidebar a.right:hover {
+    transform: translateX(-10px);
+}
+
+.social-sidebar a.right::after {
+    left: auto;
+    right: 520px;
+    transform: translateX(10px);
+}
+
+.social-sidebar a.right:hover::after {
+    transform: translateX(0);
+}
+
+/* Indicadores de sección (barra lateral derecha) */
+.section-indicators {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.indicator {
+    color: var(--color-text);
+    background: var(--color-bg-secondary);
+    padding: 5px;
+    border-radius: 50%;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+    position: relative;
+}
+
+.indicator:hover {
+    background: var(--color-accent);
+    transform: scale(1.1);
+    color: #fff;
+}
+
+/* Estilos para el tooltip de indicadores */
+.indicator::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.indicator:hover::after {
+    opacity: 1;
+}
+
+.indicator.active {
+    background: var(--color-accent);
+    color: #fff;
+    transform: scale(1.2);
+}
