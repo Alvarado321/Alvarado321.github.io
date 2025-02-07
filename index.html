@@ -39,7 +39,7 @@
       ========================================== */
 			--bg-hero: url('https://i.pinimg.com/originals/27/d4/8c/27d48cf055551b3b8ac8a6b38d2bc4de.gif');
 			--bg-about: url('');
-			--bg-experience: url('');
+			--bg-experience: url('https://i.pinimg.com/originals/4c/23/98/4c2398e6be397bb08b5cb70b2192d730.gif');
 			--bg-skills: url('');
 			--bg-education: url('');
 			--bg-portfolio: url('');
@@ -116,6 +116,26 @@
 
 			100% {
 				transform: translateY(0);
+			}
+		}
+
+		@keyframes fallBounce {
+			0% {
+				transform: translate(-50%, -100vh);
+				opacity: 0;
+			}
+
+			60% {
+				transform: translate(-50%, 0);
+			}
+
+			75% {
+				transform: translate(-50%, calc(-50% + 15px));
+			}
+
+			100% {
+				transform: translate(-50%, calc(-50% + 15px));
+				opacity: 1;
 			}
 		}
 
@@ -232,7 +252,6 @@
 			background-image: var(--bg-contact);
 		}
 
-		/* Efecto “humo” en el fondo de cada sección (similar al color del tema) */
 		section::after {
 			content: "";
 			position: absolute;
@@ -247,7 +266,8 @@
 			z-index: 0;
 		}
 
-		.section-overlay {
+		.section-overlay,
+		.section-overlay-about {
 			background: var(--color-overlay);
 			padding: 60px 20px;
 			border-radius: var(--border-radius);
@@ -259,6 +279,11 @@
 			animation: fadeInUp 1s forwards;
 			position: relative;
 			z-index: 1;
+		}
+
+		.section-overlay-about {
+			padding-top: 0;
+			padding-bottom: 0;
 		}
 
 		/* =======================================
@@ -282,6 +307,7 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
+			animation: fallBounce 1s ease-out;
 			z-index: 2;
 			text-align: center;
 			max-width: 800px;
@@ -334,6 +360,9 @@
 			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 			align-items: center;
 			text-align: left;
+			padding-top: 0;
+			padding-bottom: 0;
+			margin-top: 0;
 		}
 
 		.about-img img,
@@ -532,32 +561,20 @@
     ========================================== */
 		.image-container {
 			position: relative;
-			overflow: hidden;
+			overflow: visible;
+			height: auto;
 		}
 
 		.image-container img {
 			display: block;
-			width: 100%;
+			max-width: 100%;
+			height: auto;
+			object-fit: contain;
 			border-radius: var(--border-radius);
 			transition: transform 0.3s ease;
-		}
-
-		.image-container::after {
-			content: "";
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			border: 15px solid var(--color-accent);
-			border-radius: inherit;
-			opacity: 0;
-			transition: opacity 0.3s ease;
-			pointer-events: none;
-		}
-
-		.image-container:hover::after {
-			opacity: 1;
+			filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
+			opacity: 0.95;
+			background-blend-mode: darken;
 		}
 
 		/* =======================================
@@ -679,6 +696,12 @@
 		.indicator:hover::after {
 			opacity: 1;
 		}
+
+		.indicator.active {
+			background: var(--color-accent);
+			color: #fff;
+			transform: scale(1.2);
+		}
 	</style>
 </head>
 
@@ -741,25 +764,31 @@
 	<section id="hero" class="hero">
 		<canvas id="three-canvas"></canvas>
 		<div class="hero-content">
-			<h1>Bienvenido a mi Porfolio</h1>
-			<p>Desarrollador, Diseñador 3D y Administrador de Sistemas</p>
+			<h1>Bienvenido a mi Portafolio</h1>
+			<p>Estoy encantado de ayudarte a explorar y descubrir todo lo que necesites saber sobre mí y lo que puedo
+				ofrecerte.</p>
 			<a href="#about" class="btn">Conoce Más</a>
 		</div>
 	</section>
 
 	<!-- ACERCA DE MÍ -->
 	<section id="about">
-		<div class="section-overlay">
-			<h2>Acerca de Mí</h2>
+		<div class="section-overlay-about">
 			<div class="about-content">
 				<div class="about-text">
+					<h1>Acerca de Mí</h1>
+					&nbsp;
 					<h3>Perfil Profesional</h3>
-					<p>Con casi 8 años de experiencia en tecnología, desarrollo web y diseño 3D, me apasiona crear
-						experiencias interactivas y soluciones innovadoras para empresas y emprendedores. Siempre en
-						búsqueda de nuevos retos y aprendizaje continuo.</p>
+					<p>
+						Con casi <span id="experience-years"></span> años de experiencia en tecnología, desarrollo web y
+						diseño 3D,
+						me apasiona crear experiencias interactivas y soluciones innovadoras para empresas y
+						emprendedores.
+						Siempre en búsqueda de nuevos retos y aprendizaje continuo.
+					</p>
 				</div>
 				<div class="about-img image-container">
-					<img src="https://source.unsplash.com/400x300/?developer,3d" alt="Perfil Profesional">
+					<img src="img\ronal.png" alt="Perfil Profesional">
 				</div>
 			</div>
 		</div>
@@ -1081,6 +1110,18 @@
 			camera.updateProjectionMatrix();
 			renderer.setSize(window.innerWidth, window.innerHeight);
 		});
+
+		/* AJUSTE AÑOS DE EXPERIENCIA ACTUAL */
+		const startDate = new Date("2016-01-01");
+		const currentDate = new Date();
+		let experienceYears = currentDate.getFullYear() - startDate.getFullYear();
+		if (
+			currentDate.getMonth() < startDate.getMonth() ||
+			(currentDate.getMonth() === startDate.getMonth() && currentDate.getDate() < startDate.getDate())
+		) {
+			experienceYears--;
+		}
+		document.getElementById("experience-years").textContent = experienceYears;
 	</script>
 </body>
 
