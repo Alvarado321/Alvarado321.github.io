@@ -6,10 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Portafolio 3D - Ronal A. Alvarado</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+
 	<style>
-		/* =======================================
-       1. VARIABLES & TEMAS (COLORES, TIPOS, SOMBRAS, TRANSICIONES)
-    ========================================== */
+		/* ==========================================================
+		1. VARIABLES & TEMAS (COLORES, TIPOS, SOMBRAS, TRANSICIONES)
+		=========================================================== */
 		:root {
 			/* Colores */
 			--color-accent: #f39c12;
@@ -34,20 +35,21 @@
 			--transition-base: all 0.3s ease;
 			--border-radius: 8px;
 
-			/* =======================================
-         2. VARIABLES DE IMÁGENES (FONDOS)
-      ========================================== */
+			/* ================================
+			2. VARIABLES DE IMÁGENES (FONDOS)
+			================================= */
 			--bg-hero: url('https://i.pinimg.com/originals/27/d4/8c/27d48cf055551b3b8ac8a6b38d2bc4de.gif');
 			--bg-about: url('');
-			--bg-experience: url('https://i.pinimg.com/originals/4c/23/98/4c2398e6be397bb08b5cb70b2192d730.gif');
+			--bg-experience: url('https://i.pinimg.com/originals/ca/26/2e/ca262e0354eea311c41134c3e4bc3bc2.gif');
 			--bg-skills: url('');
-			--bg-education: url('');
+			--bg-education: url('https://img.freepik.com/fotos-premium/ilustracion-pixel-art-laboratorio-ciencias_36682-108353.jpg');
 			--bg-portfolio: url('');
-			--bg-services: url('');
+			--bg-services: url('https://img0.reactor.cc/pics/post/1Eni1-Pixel-Gif-Pixel-Art-%D0%B7%D0%B8%D0%BC%D0%B0-4972436.gif');
 			--bg-testimonials: url('');
 			--bg-contact: url('');
 		}
 
+		/* MODO CLARO */
 		body.white-mode {
 			--color-bg: #fff;
 			--color-bg-secondary: #f1f1f1;
@@ -62,9 +64,9 @@
 			--border-radius: 8px;
 		}
 
-		/* =======================================
-       3. RESETEO & BASE GLOBAL
-    ========================================== */
+		/* =======================
+		3. RESETEO & BASE GLOBAL
+		======================== */
 		* {
 			margin: 0;
 			padding: 0;
@@ -90,9 +92,9 @@
 			color: inherit;
 		}
 
-		/* =======================================
-       4. ANIMACIONES & EFECTOS (GENERAL)
-    ========================================== */
+		/* ==================================
+		4. ANIMACIONES & EFECTOS (GENERAL)
+		=================================== */
 		@keyframes fadeInUp {
 			from {
 				opacity: 0;
@@ -139,9 +141,9 @@
 			}
 		}
 
-		/* =======================================
-       5. HEADER & NAVEGACIÓN
-    ========================================== */
+		/* ======================
+		5. HEADER & NAVEGACIÓN
+		======================= */
 		header {
 			position: fixed;
 			top: 0;
@@ -202,9 +204,9 @@
 			color: var(--color-accent);
 		}
 
-		/* =======================================
-       6. SECCIONES Y FONDOS CON PARALLAX + EFECTO DE TRANSICIÓN
-    ========================================== */
+		/* =========================================================
+		6. SECCIONES Y FONDOS CON PARALLAX + EFECTO DE TRANSICIÓN
+		========================================================== */
 		section {
 			padding: 100px 20px;
 			background-attachment: fixed;
@@ -215,7 +217,7 @@
 			overflow: hidden;
 		}
 
-		/* Uso de variables para fondos */
+		/* Uso de variables para fondos de secciones */
 		#hero {
 			background: var(--bg-hero) center/cover;
 		}
@@ -252,6 +254,7 @@
 			background-image: var(--bg-contact);
 		}
 
+		/* Efecto de transición en secciones */
 		section::after {
 			content: "";
 			position: absolute;
@@ -266,6 +269,7 @@
 			z-index: 0;
 		}
 
+		/* Overlay para contenido de secciones */
 		.section-overlay,
 		.section-overlay-about {
 			background: var(--color-overlay);
@@ -286,9 +290,9 @@
 			padding-bottom: 0;
 		}
 
-		/* =======================================
-       7. SECCIÓN HERO
-    ========================================== */
+		/* ===============
+		7. SECCIÓN HERO
+		================ */
 		.hero {
 			height: 100vh;
 			position: relative;
@@ -341,10 +345,10 @@
 			background: #d35400;
 		}
 
-		/* =======================================
-       8. CONTENIDO DE SECCIONES (ACERCA, EXPERIENCIA, HABILIDADES, EDUCACIÓN, PORTAFOLIO,
-           SERVICIOS, TESTIMONIOS, CONTACTO)
-    ========================================== */
+		/* ==================================================================================
+		8. CONTENIDO DE SECCIONES (Acerca, Experiencia, Habilidades, Educación, Portafolio,
+		Servicios, Testimonios, Contacto)
+		=================================================================================== */
 		.about-content,
 		.card-grid,
 		.portfolio-grid,
@@ -461,9 +465,9 @@
 			min-height: 120px;
 		}
 
-		/* =======================================
-       9. FOOTER, MASCOTA Y SCROLL TO TOP
-    ========================================== */
+		/* ==================================
+		9. FOOTER, MASCOTA Y SCROLL TO TOP
+		=================================== */
 		footer {
 			background: var(--color-bg-secondary);
 			padding: 20px;
@@ -509,9 +513,9 @@
 			color: white;
 		}
 
-		/* =======================================
-       10. RESPONSIVE
-    ========================================== */
+		/* ==============
+		10. RESPONSIVE
+		=============== */
 		@media (max-width: 768px) {
 			.nav-toggle {
 				display: block;
@@ -556,9 +560,9 @@
 			}
 		}
 
-		/* =======================================
-       11. SMOOTH EFFECT ENTRE IMÁGENES
-    ========================================== */
+		/* ================================
+		11. SMOOTH EFFECT ENTRE IMÁGENES
+		================================= */
 		.image-container {
 			position: relative;
 			overflow: visible;
@@ -577,9 +581,9 @@
 			background-blend-mode: darken;
 		}
 
-		/* =======================================
-       12. REDES SOCIALES & INDICADORES DE SECCIÓN
-    ========================================== */
+		/* ===========================================
+		12. REDES SOCIALES & INDICADORES DE SECCIÓN
+		============================================ */
 		.social-sidebar {
 			position: fixed;
 			top: 50%;
@@ -643,7 +647,7 @@
 			transform: translateX(0);
 		}
 
-
+		/* Indicadores de sección (barra lateral derecha) */
 		.section-indicators {
 			position: fixed;
 			top: 50%;
@@ -676,7 +680,7 @@
 			color: #fff;
 		}
 
-		/* Estilos para el tooltip */
+		/* Estilos para el tooltip de indicadores */
 		.indicator::after {
 			content: attr(data-tooltip);
 			position: absolute;
@@ -706,13 +710,12 @@
 </head>
 
 <body>
-	<!-- REDES SOCIALES (barra lateral izquierda) -->
 	<div class="social-sidebar">
 		<a href="https://linkedin.com" target="_blank" data-title="Linkedin">
 			<img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="Linkedin">
 		</a>
 		<a href="https://discord.com" target="_blank" data-title="Discord">
-			<img src="https://img.icons8.com/color/48/000000/discord.png" alt="Facebook">
+			<img src="https://img.icons8.com/color/48/000000/discord.png" alt="Discord">
 		</a>
 		<a href="https://facebook.com" target="_blank" data-title="Facebook">
 			<img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook">
@@ -725,8 +728,6 @@
 		</a>
 	</div>
 
-
-	<!-- INDICADORES DE SECCIÓN (barra lateral derecha) -->
 	<div class="section-indicators">
 		<a href="#hero" class="indicator" data-tooltip="Inicio">⦿</a>
 		<a href="#about" class="indicator" data-tooltip="Acerca de mí">⦿</a>
@@ -739,8 +740,6 @@
 		<a href="#contact" class="indicator" data-tooltip="Contacto">⦿</a>
 	</div>
 
-
-	<!-- HEADER Y NAVEGACIÓN -->
 	<header>
 		<div class="logo">Ronal A. Alvarado V.</div>
 		<button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">&#9776;</button>
@@ -760,7 +759,6 @@
 		</nav>
 	</header>
 
-	<!-- SECCIÓN HERO - FONDO 3D Y PARALLAX -->
 	<section id="hero" class="hero">
 		<canvas id="three-canvas"></canvas>
 		<div class="hero-content">
@@ -771,7 +769,6 @@
 		</div>
 	</section>
 
-	<!-- ACERCA DE MÍ -->
 	<section id="about">
 		<div class="section-overlay-about">
 			<div class="about-content">
@@ -794,7 +791,6 @@
 		</div>
 	</section>
 
-	<!-- EXPERIENCIA -->
 	<section id="experience">
 		<div class="section-overlay">
 			<h2>Experiencia Laboral</h2>
@@ -818,7 +814,6 @@
 		</div>
 	</section>
 
-	<!-- HABILIDADES -->
 	<section id="skills">
 		<div class="section-overlay">
 			<h2>Habilidades</h2>
@@ -848,7 +843,6 @@
 		</div>
 	</section>
 
-	<!-- EDUCACIÓN -->
 	<section id="education">
 		<div class="section-overlay">
 			<h2>Educación</h2>
@@ -871,7 +865,6 @@
 		</div>
 	</section>
 
-	<!-- PORTAFOLIO -->
 	<section id="portfolio">
 		<div class="section-overlay">
 			<h2>Proyectos Destacados</h2>
@@ -894,7 +887,6 @@
 		</div>
 	</section>
 
-	<!-- SERVICIOS -->
 	<section id="services">
 		<div class="section-overlay">
 			<h2>Servicios</h2>
@@ -915,7 +907,6 @@
 		</div>
 	</section>
 
-	<!-- TESTIMONIOS -->
 	<section id="testimonials">
 		<div class="section-overlay">
 			<h2>Testimonios</h2>
@@ -934,7 +925,6 @@
 		</div>
 	</section>
 
-	<!-- CONTACTO -->
 	<section id="contact">
 		<div class="section-overlay">
 			<h2>Contacto</h2>
@@ -952,13 +942,11 @@
 		</div>
 	</section>
 
-	<!-- FOOTER, SCROLL TO TOP & MASCOTA -->
 	<footer>
 		<p>&copy; 2025 Ronal A. Alvarado. Todos los derechos reservados.</p>
 	</footer>
 	<button id="scrollToTop">&#8679;</button>
 
-	<!-- Mascota: sistema de movimiento con control por clic y flechas -->
 	<div class="mascota" id="pet">
 		<img src="https://via.placeholder.com/100x100/CCCCCC/000000?text=idle1" class="layer layer1"
 			alt="Mascota - Capa 1">
@@ -968,12 +956,11 @@
 			alt="Mascota - Capa 3">
 	</div>
 
-	<!-- =======================================
-       13. SCRIPTS: THREE.JS, PARALLAX, ANIMACIONES, INDICADORES & SISTEMA DE MOVIMIENTO DE LA MASCOTA
-  ========================================== -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 	<script>
-		/* TEMA Y MENÚ */
+		/* ==============================================================
+		TEMA Y MENÚ: Alterna el modo claro/oscuro y el menú responsive
+		=============================================================== */
 		document.getElementById('theme-toggle').addEventListener('click', () => {
 			document.body.classList.toggle('white-mode');
 		});
@@ -983,7 +970,9 @@
 			navMenu.classList.toggle('active');
 		});
 
-		/* THREE.JS: Configuración básica para el fondo 3D */
+		/* ===============================================
+		THREE.JS: Configuración básica para el fondo 3D
+		================================================ */
 		const canvas = document.getElementById('three-canvas');
 		const scene = new THREE.Scene();
 		const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -1003,7 +992,9 @@
 		}
 		animate3D();
 
-		/* EFECTOS DE SCROLL & PARALLAX */
+		/* ================================================================
+		EFECTOS DE SCROLL & PARALLAX: Ajusta el fondo de la sección HERO
+		================================================================= */
 		window.addEventListener('scroll', () => {
 			const scrollPosition = window.pageYOffset;
 			const hero = document.getElementById('hero');
@@ -1019,7 +1010,9 @@
 			}
 		});
 
-		/* SISTEMA DE MOVIMIENTO PARA LA MASCOTA */
+		/* ====================================================================
+		SISTEMA DE MASCOTA: Controla el movimiento y animación de la mascota
+		===================================================================== */
 		const petFrames = {
 			idle: [
 				"https://via.placeholder.com/100x100/CCCCCC/000000?text=idle1",
@@ -1062,6 +1055,7 @@
 			} else {
 				pet.state = "idle";
 			}
+			// Limitar el movimiento dentro de la ventana
 			pet.x = Math.max(0, Math.min(window.innerWidth - pet.el.offsetWidth, pet.x));
 			pet.y = Math.max(0, Math.min(window.innerHeight - pet.el.offsetHeight, pet.y));
 			pet.el.style.transform = `translate(${pet.x}px, ${pet.y}px)`;
@@ -1076,7 +1070,9 @@
 		}
 		requestAnimationFrame(updatePet);
 
-		/* INTERSECTION OBSERVER PARA ANIMAR SECCIONES */
+		/* ===============================================================
+		INTERSECTION OBSERVER: Anima secciones al entrar en el viewport
+		================================================================ */
 		const sections = document.querySelectorAll('section');
 		const indicators = document.querySelectorAll('.section-indicators .indicator');
 
@@ -1095,7 +1091,9 @@
 		}, observerOptions);
 		sections.forEach(section => sectionObserver.observe(section));
 
-		/* BOTÓN "SCROLL TO TOP" */
+		/* ================================================================
+		BOTÓN "SCROLL TO TOP": Muestra u oculta el botón según el scroll
+		================================================================= */
 		const scrollToTopBtn = document.getElementById('scrollToTop');
 		window.addEventListener('scroll', () => {
 			scrollToTopBtn.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
@@ -1104,14 +1102,18 @@
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		});
 
-		/* AJUSTE DEL CANVAS AL REDIMENSIONAR */
+		/* ===================================================================
+		AJUSTE DEL CANVAS AL REDIMENSIONAR: Actualiza la cámara y el render
+		==================================================================== */
 		window.addEventListener('resize', () => {
 			camera.aspect = window.innerWidth / window.innerHeight;
 			camera.updateProjectionMatrix();
 			renderer.setSize(window.innerWidth, window.innerHeight);
 		});
 
-		/* AJUSTE AÑOS DE EXPERIENCIA ACTUAL */
+		/* ===============================================================
+		AÑOS DE EXPERIENCIA: Calcula la cantidad de años de experiencia
+		================================================================ */
 		const startDate = new Date("2016-01-01");
 		const currentDate = new Date();
 		let experienceYears = currentDate.getFullYear() - startDate.getFullYear();
