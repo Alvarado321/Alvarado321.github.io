@@ -1,6 +1,4 @@
-/* ==========================================================
-1. VARIABLES & TEMAS (COLORES, TIPOS, SOMBRAS, TRANSICIONES)
-=========================================================== */
+/* 1. VARIABLES & TEMAS */
 :root {
     /* Colores */
     --color-accent: #f39c12;
@@ -25,9 +23,7 @@
     --transition-base: all 0.3s ease;
     --border-radius: 8px;
 
-    /* ================================
-2. VARIABLES DE IMÁGENES (FONDOS)
-================================= */
+    /* Fondos (imágenes) */
     --bg-hero: url("https://i.pinimg.com/originals/27/d4/8c/27d48cf055551b3b8ac8a6b38d2bc4de.gif");
     --bg-about: url("");
     --bg-experience: url("https://i.pinimg.com/originals/ca/26/2e/ca262e0354eea311c41134c3e4bc3bc2.gif");
@@ -39,24 +35,18 @@
     --bg-contact: url("");
 }
 
-/* MODO CLARO */
+/* Modo Claro: Solo se redefinen las variables que varían */
 body.white-mode {
     --color-bg: #fff;
     --color-bg-secondary: #f1f1f1;
     --color-text: #111;
     --color-overlay: rgba(246, 246, 246, 0.65);
-
     --shadow-header: 0 2px 4px rgba(0, 0, 0, 0.5);
     --shadow-card: 0px 1px 3px rgba(0, 0, 0, 0.6);
     --shadow-hover: 0 5px 5px var(--color-accent);
-
-    --transition-base: all 0.3s ease;
-    --border-radius: 8px;
 }
 
-/* =======================
-3. RESETEO & BASE GLOBAL
-======================== */
+/* 2. RESET & ESTILOS GLOBALES  */
 * {
     margin: 0;
     padding: 0;
@@ -82,9 +72,7 @@ a {
     color: inherit;
 }
 
-/* ==================================
-4. ANIMACIONES & EFECTOS (GENERAL)
-=================================== */
+/* 3. ANIMACIONES & EFECTOS */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -131,9 +119,7 @@ a {
     }
 }
 
-/* ======================
-5. HEADER & NAVEGACIÓN
-======================= */
+/* 4. HEADER & NAVEGACIÓN */
 header {
     position: fixed;
     top: 0;
@@ -181,12 +167,12 @@ header .logo {
 .nav-menu ul li a,
 .nav-menu ul li button {
     font-weight: 500;
+    font-size: var(--font-size-button);
     color: var(--color-text);
     background: none;
     border: none;
     cursor: pointer;
     transition: color 0.3s;
-    font-size: var(--font-size-button);
 }
 
 .nav-menu ul li a:hover,
@@ -194,9 +180,7 @@ header .logo {
     color: var(--color-accent);
 }
 
-/* =========================================================
-6. SECCIONES Y FONDOS CON PARALLAX + EFECTO DE TRANSICIÓN
-========================================================== */
+/* 5. SECCIONES Y FONDOS (PARALLAX & TRANSICIÓN) */
 section {
     padding: 100px 20px;
     background-attachment: fixed;
@@ -207,7 +191,7 @@ section {
     overflow: hidden;
 }
 
-/* Uso de variables para fondos de secciones */
+/* Fondos por sección */
 #hero {
     background: var(--bg-hero) center/cover;
 }
@@ -244,7 +228,7 @@ section {
     background-image: var(--bg-contact);
 }
 
-/* Efecto de transición en secciones */
+/* Transición en secciones */
 section::after {
     content: "";
     position: absolute;
@@ -261,7 +245,7 @@ section::after {
     z-index: 0;
 }
 
-/* Overlay para contenido de secciones */
+/* Overlay en secciones */
 .section-overlay,
 .section-overlay-about {
     background: var(--color-overlay);
@@ -282,9 +266,7 @@ section::after {
     padding-bottom: 0;
 }
 
-/* ===============
-7. SECCIÓN HERO
-================ */
+/* 6. SECCIÓN HERO */
 .hero {
     height: 100vh;
     position: relative;
@@ -337,10 +319,7 @@ section::after {
     background: #d35400;
 }
 
-/* ==================================================================================
-8. CONTENIDO DE SECCIONES (Acerca, Experiencia, Habilidades, Educación, Portafolio,
-Servicios, Testimonios, Contacto)
-=================================================================================== */
+/* 7. CONTENIDO DE SECCIONES (ACERCA, EXPERIENCIA, HABILIDADES, ETC.) */
 .about-content,
 .card-grid,
 .portfolio-grid,
@@ -356,8 +335,7 @@ Servicios, Testimonios, Contacto)
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     align-items: center;
     text-align: left;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
     margin-top: 0;
 }
 
@@ -457,9 +435,7 @@ Servicios, Testimonios, Contacto)
     min-height: 120px;
 }
 
-/* ==================================
-9. FOOTER, MASCOTA Y SCROLL TO TOP
-=================================== */
+/* 8. FOOTER, MASCOTA Y SCROLL TO TOP */
 footer {
     background: var(--color-bg-secondary);
     padding: 20px;
@@ -490,7 +466,6 @@ footer {
     bottom: 100px;
     right: 30px;
     background: var(--color-accent);
-    color: var(--color-text);
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -505,9 +480,7 @@ footer {
     color: white;
 }
 
-/* ==============
-10. RESPONSIVE
-=============== */
+/* 9. RESPONSIVE */
 @media (max-width: 768px) {
     .nav-toggle {
         display: block;
@@ -552,9 +525,7 @@ footer {
     }
 }
 
-/* ================================
-11. SMOOTH EFFECT ENTRE IMÁGENES
-================================= */
+/* 10. SMOOTH EFFECT ENTRE IMÁGENES */
 .image-container {
     position: relative;
     overflow: visible;
@@ -573,9 +544,7 @@ footer {
     background-blend-mode: darken;
 }
 
-/* ===========================================
-12. REDES SOCIALES & INDICADORES DE SECCIÓN
-============================================ */
+/* 11. REDES SOCIALES & INDICADORES DE SECCIÓN */
 .social-sidebar {
     position: fixed;
     top: 50%;
@@ -602,7 +571,6 @@ footer {
 }
 
 .social-sidebar a:hover {
-    background: transparent;
     transform: translateX(10px);
 }
 
@@ -672,7 +640,6 @@ footer {
     color: #fff;
 }
 
-/* Estilos para el tooltip de indicadores */
 .indicator::after {
     content: attr(data-tooltip);
     position: absolute;
