@@ -1,4 +1,6 @@
-/* 1. Variables y equipos */
+/* ==============================================================
+    1. VARIABLES, RESET & ESTILOS GLOBALES
+=============================================================== */
 :root {
     /* Colores */
     --color-accent: #f39c12;
@@ -35,7 +37,7 @@
     --bg-contact: url("");
 }
 
-/* Modo Claro: Solo se redefinen las variables que varían */
+/* Modo Claro */
 body.white-mode {
     --color-bg: #fff;
     --color-bg-secondary: #f1f1f1;
@@ -46,7 +48,7 @@ body.white-mode {
     --shadow-hover: 0 5px 5px var(--color-accent);
 }
 
-/* 2. RESET & ESTILOS GLOBLOES  */
+/* Reset & Global */
 * {
     margin: 0;
     padding: 0;
@@ -56,6 +58,7 @@ body.white-mode {
 html {
     scroll-behavior: smooth;
     font-size: var(--font-size-base);
+    scroll-snap-type: y mandatory;
 }
 
 body {
@@ -65,7 +68,6 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
-    scroll-snap-type: y mandatory;
 }
 
 a {
@@ -73,7 +75,9 @@ a {
     color: inherit;
 }
 
-/* 3. ANIMACIONES & EFECTOS */
+/* ==============================================================
+   2. ANIMACIONES & EFECTOS
+=============================================================== */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -125,13 +129,14 @@ a {
         opacity: 0;
         transform: translateX(-100%);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
     }
 }
 
-/* Scroll Reveal: Oculta inicialmente y luego muestra la animación */
+/* Scroll Reveal */
 .hidden {
     opacity: 0;
     transform: translateY(30px);
@@ -143,7 +148,9 @@ a {
     transform: translateY(0);
 }
 
-/* 4. Encabezado y nave */
+/* ==============================================================
+   3. ENCABEZADO Y NAVEGACIÓN
+=============================================================== */
 header {
     position: fixed;
     top: 0;
@@ -204,7 +211,9 @@ header .logo {
     color: var(--color-accent);
 }
 
-/* 5. SECCIONES Y FONDOS (PARALLAX & TRANSICIÓN) */
+/* ==============================================================
+   4. SECCIONES & FONDOS (PARALLAX, OVERLAY Y TRANSICIÓN)
+=============================================================== */
 section {
     padding: 100px 20px;
     background-attachment: fixed;
@@ -265,9 +274,7 @@ section::after {
     left: 0;
     right: 0;
     height: 10px;
-    background: radial-gradient(ellipse at center,
-            var(--color-accent) 10%,
-            transparent 80%);
+    background: radial-gradient(ellipse at center, var(--color-accent) 10%, transparent 80%);
     filter: blur(5px);
     opacity: 0.7;
     transform: translateY(0%);
@@ -295,7 +302,9 @@ section::after {
     padding-bottom: 0;
 }
 
-/* 6. SECCIÓN HERO */
+/* ==============================================================
+   5. SECCIÓN HERO
+=============================================================== */
 .hero {
     height: 100vh;
     position: relative;
@@ -348,7 +357,9 @@ section::after {
     background: #d35400;
 }
 
-/* 7. CONTENIDO DE SECCIONES (ACERCA, EXPERIENCIA, HABILIDADES, ETC.) */
+/* ==============================================================
+   6. CONTENIDO DE SECCIONES (ACERCA, EXPERIENCIA, ETC.)
+=============================================================== */
 .about-content,
 .card-grid,
 .portfolio-grid,
@@ -416,7 +427,7 @@ section::after {
     transform: scale(1.05);
 }
 
-/* Estilos para el contenedor de círculo */
+/* Contenedor de círculos (fondo decorativo) */
 .circle-container {
     position: absolute;
     top: 0;
@@ -594,7 +605,9 @@ footer {
     color: white;
 }
 
-/* 11. REDES SOCIALES & INDICADORES DE SECCIÓN */
+/* ==============================================================
+   8. REDES SOCIALES & INDICADORES DE SECCIÓN
+=============================================================== */
 .social-sidebar {
     position: fixed;
     top: 50%;
@@ -657,7 +670,6 @@ footer {
     transform: translateX(0);
 }
 
-/* Indicadores de Secación (Barra Lateral Derecha) */
 .section-indicators {
     position: fixed;
     top: 50%;
@@ -716,7 +728,9 @@ footer {
     transform: scale(1.2);
 }
 
-/* 9. RESPONSIVO */
+/* ==============================================================
+   9. RESPONSIVO
+=============================================================== */
 @media (max-width: 768px) {
     .nav-toggle {
         display: block;
@@ -761,7 +775,9 @@ footer {
     }
 }
 
-/* 10. SMOOTH EFFECT ENTRE IMÁGENES */
+/* ==============================================================
+   10. SMOOTH EFFECT ENTRE IMÁGENES
+=============================================================== */
 .image-container {
     position: relative;
     overflow: visible;

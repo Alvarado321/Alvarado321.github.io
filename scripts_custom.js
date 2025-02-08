@@ -1,6 +1,5 @@
-
 /* ==============================================================
-TEMA Y MENÚ: Alterna el modo claro/oscuro y el menú responsive
+   TEMA Y MENÚ: Alterna el modo claro/oscuro y el menú responsive
 =============================================================== */
 document.getElementById('theme-toggle').addEventListener('click', () => {
     document.body.classList.toggle('white-mode');
@@ -12,11 +11,16 @@ navToggle.addEventListener('click', () => {
 });
 
 /* ===============================================
-THREE.JS: Configuración básica para el fondo 3D
+   THREE.JS: Configuración básica para el fondo 3D
 ================================================ */
 const canvas = document.getElementById('three-canvas');
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+);
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 scene.background = null;
@@ -34,7 +38,7 @@ function animate3D() {
 animate3D();
 
 /* ================================================================
-EFECTOS DE SCROLL & PARALLAX: Ajusta el fondo de la sección HERO
+   EFECTOS DE SCROLL & PARALLAX: Ajusta el fondo de la sección HERO
 ================================================================= */
 window.addEventListener('scroll', () => {
     const scrollPosition = window.pageYOffset;
@@ -52,7 +56,7 @@ window.addEventListener('scroll', () => {
 });
 
 /* ====================================================================
-SISTEMA DE MASCOTA: Controla el movimiento y animación de la mascota
+   SISTEMA DE MASCOTA: Controla el movimiento y animación de la mascota
 ===================================================================== */
 const petFrames = {
     idle: [
@@ -112,7 +116,7 @@ function updatePet(timestamp) {
 requestAnimationFrame(updatePet);
 
 /* ===============================================================
-INTERSECTION OBSERVER: Anima secciones al entrar en el viewport
+   INTERSECTION OBSERVER: Anima secciones al entrar en el viewport
 ================================================================ */
 const sections = document.querySelectorAll('section');
 const indicators = document.querySelectorAll('.section-indicators .indicator');
@@ -141,7 +145,7 @@ sections.forEach(section => {
 });
 
 /* ================================================================
-BOTÓN "SCROLL TO TOP": Muestra u oculta el botón según el scroll
+   BOTÓN "SCROLL TO TOP": Muestra u oculta el botón según el scroll
 ================================================================= */
 const scrollToTopBtn = document.getElementById('scrollToTop');
 window.addEventListener('scroll', () => {
@@ -152,7 +156,7 @@ scrollToTopBtn.addEventListener('click', () => {
 });
 
 /* ===================================================================
-AJUSTE DEL CANVAS AL REDIMENSIONAR: Actualiza la cámara y el render
+   AJUSTE DEL CANVAS AL REDIMENSIONAR: Actualiza la cámara y el render
 ==================================================================== */
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -161,7 +165,7 @@ window.addEventListener('resize', () => {
 });
 
 /* ===============================================================
-AÑOS DE EXPERIENCIA: Calcula la cantidad de años de experiencia
+   AÑOS DE EXPERIENCIA: Calcula la cantidad de años de experiencia
 ================================================================ */
 const startDate = new Date("2016-01-01");
 const currentDate = new Date();
