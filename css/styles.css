@@ -65,6 +65,7 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    scroll-snap-type: y mandatory;
 }
 
 a {
@@ -128,6 +129,18 @@ a {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+/* Scroll Reveal: Oculta inicialmente y luego muestra la animación */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* 4. Encabezado y nave */
@@ -200,6 +213,11 @@ section {
     background-size: cover;
     position: relative;
     overflow: hidden;
+    scroll-snap-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Fondos por sección */
@@ -576,70 +594,6 @@ footer {
     color: white;
 }
 
-/* 9. Responsivo */
-@media (max-width: 768px) {
-    .nav-toggle {
-        display: block;
-    }
-
-    .nav-menu {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: var(--color-bg-secondary);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 30px;
-    }
-
-    .nav-menu ul {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .nav-menu ul li {
-        margin: 15px 0;
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    header {
-        flex-direction: row;
-        padding: 15px 20px;
-    }
-
-    .hero-content h1 {
-        font-size: var(--font-size-h2);
-    }
-
-    .hero-content p {
-        font-size: 18px;
-    }
-}
-
-/* 10. SMOOTH EFFECT ENTRE IMÁGENES */
-.image-container {
-    position: relative;
-    overflow: visible;
-    height: auto;
-}
-
-.image-container img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: var(--border-radius);
-    transition: transform 0.3s ease;
-    filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
-    opacity: 0.95;
-    background-blend-mode: darken;
-}
-
 /* 11. REDES SOCIALES & INDICADORES DE SECCIÓN */
 .social-sidebar {
     position: fixed;
@@ -760,4 +714,68 @@ footer {
     background: var(--color-accent);
     color: #fff;
     transform: scale(1.2);
+}
+
+/* 9. RESPONSIVO */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--color-bg-secondary);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 30px;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-menu ul li {
+        margin: 15px 0;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    header {
+        flex-direction: row;
+        padding: 15px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: var(--font-size-h2);
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
+}
+
+/* 10. SMOOTH EFFECT ENTRE IMÁGENES */
+.image-container {
+    position: relative;
+    overflow: visible;
+    height: auto;
+}
+
+.image-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease;
+    filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.5));
+    opacity: 0.95;
+    background-blend-mode: darken;
 }

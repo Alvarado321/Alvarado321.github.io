@@ -121,16 +121,24 @@ const observerOptions = { threshold: 0.6 };
 const sectionObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            
             indicators.forEach(indicator => {
                 indicator.classList.remove('active');
                 if (indicator.getAttribute('href') === '#' + entry.target.id) {
                     indicator.classList.add('active');
                 }
             });
+        } else {
+            entry.target.classList.remove('show');
         }
     });
 }, observerOptions);
-sections.forEach(section => sectionObserver.observe(section));
+
+sections.forEach(section => {
+    section.classList.add('hidden');
+    sectionObserver.observe(section);
+});
 
 /* ================================================================
 BOTÓN "SCROLL TO TOP": Muestra u oculta el botón según el scroll
