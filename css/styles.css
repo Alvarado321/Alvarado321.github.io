@@ -4,13 +4,13 @@
 :root {
     /* Colores */
     --color-accent: #f39c12;
-    --color-bg: #111;
-    --color-bg-secondary: #111111;
+    --color-bg: #131415;
+    --color-bg-secondary: #191a1d;
     --color-text: #fff;
     --color-overlay: rgba(30, 30, 30, 0.65);
 
     /* Tipografías y tamaños https://fonts.google.com/ */
-    --font-family: "Roboto", sans-serif;
+    --font-family: "Exo 2", serif;
     --font-size-base: 16px;
     --font-size-h1: 48px;
     --font-size-h2: 36px;
@@ -285,7 +285,7 @@ section::after {
 .section-overlay,
 .section-overlay-about {
     background: var(--color-overlay);
-    padding: 60px 20px;
+    padding: 20px 20px;
     border-radius: var(--border-radius);
     max-width: 1100px;
     margin: auto;
@@ -366,9 +366,9 @@ section::after {
 .services-grid,
 .testimonials-grid {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    margin-top: 40px;
-    padding: 60px 30px;
+    padding: 30px 30px;
 }
 
 .about-content {
@@ -494,11 +494,15 @@ section::after {
 .testimonial:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
+    transition: var(--transition-base);
 }
 
 .card-content {
-    padding: 15px;
+    display: flex;
+    flex-direction: row;
     text-align: left;
+    padding: 15px;
+    margin: 25px;
 }
 
 .card-content h3 {
@@ -509,6 +513,88 @@ section::after {
 .card-content p {
     font-size: var(--font-size-text);
     line-height: 1.4;
+}
+
+.card-image {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.card-details,
+.card-details ul {
+    flex: 1;
+    padding: 15px;
+}
+
+/* --- Carrusel y Tarjetas --- */
+.carousel-wrapper {
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding: 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Oculta la scrollbar en WebKit */
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+/* Cada tarjeta */
+.carousel .card {
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+    background: var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* Hover para PC */
+.carousel .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* --- Numeros del Carrusel --- */
+.carousel-number {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.carousel-number .number {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: bold;
+}
+
+.carousel-number .number.active,
+.carousel-number .number:hover {
+    background: var(--color-accent);
 }
 
 .service-card,
