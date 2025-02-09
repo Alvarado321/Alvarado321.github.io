@@ -37,24 +37,6 @@ function animate3D() {
 }
 animate3D();
 
-/* ================================================================
-   EFECTOS DE SCROLL & PARALLAX: Ajusta el fondo de la sección HERO
-================================================================= */
-window.addEventListener('scroll', () => {
-    const scrollPosition = window.pageYOffset;
-    const hero = document.getElementById('hero');
-    const maxScroll = 1600;
-    if (scrollPosition <= maxScroll) {
-        const zoomPercent = 120 + (scrollPosition * 0.2);
-        const brightness = 1 - (scrollPosition / maxScroll) * 0.95;
-        hero.style.backgroundSize = `${zoomPercent}% auto`;
-        hero.style.filter = `brightness(${brightness})`;
-    } else {
-        hero.style.backgroundSize = `100% auto`;
-        hero.style.filter = `brightness(1)`;
-    }
-});
-
 /* ====================================================================
    SISTEMA DE MASCOTA: Controla el movimiento y animación de la mascota
 ===================================================================== */

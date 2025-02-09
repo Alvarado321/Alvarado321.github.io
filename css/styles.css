@@ -28,7 +28,7 @@
     /* Fondos (imágenes) */
     --bg-hero: url("https://i.pinimg.com/originals/27/d4/8c/27d48cf055551b3b8ac8a6b38d2bc4de.gif");
     --bg-about: url("");
-    --bg-experience: url("https://i.pinimg.com/originals/ca/26/2e/ca262e0354eea311c41134c3e4bc3bc2.gif");
+    --bg-experience: url("https://i.pinimg.com/originals/d0/01/08/d00108e2a403bc44c2aa529043158701.gif");
     --bg-skills: url("");
     --bg-education: url("https://img.freepik.com/fotos-premium/ilustracion-pixel-art-laboratorio-ciencias_36682-108353.jpg");
     --bg-portfolio: url("");
@@ -39,6 +39,7 @@
 
 /* Modo Claro */
 body.white-mode {
+    /* Colores */
     --color-bg: #fff;
     --color-bg-secondary: #f1f1f1;
     --color-text: #111;
@@ -227,6 +228,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 /* Fondos por sección */
@@ -858,6 +860,10 @@ footer {
 
     .hero-content p {
         font-size: 18px;
+    }
+
+    .about-img img {
+        width: 60%;
     }
 }
 
