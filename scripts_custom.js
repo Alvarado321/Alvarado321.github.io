@@ -195,51 +195,47 @@ function cambiarColorAccent() {
 root.style.setProperty('transition', '--color-accent 1s ease-in-out');
 setInterval(cambiarColorAccent, 10000);
 
+/* ======================================================
+   CARRUSEL: Muestra la tarjeta activa de experiencia
+======================================================= */
 const carousel = document.querySelector('.carousel');
-  const cards = document.querySelectorAll('.carousel .card');
-  const number = document.querySelectorAll('.carousel-number .number');
+const cards = document.querySelectorAll('.carousel .card');
+const number = document.querySelectorAll('.carousel-number .number');
 
-  function updateIndicators() {
-    const carouselRect = carousel.getBoundingClientRect();
-    let activeIndex = 0;
-    let minDistance = Infinity;
+function updateIndicators() {
+const carouselRect = carousel.getBoundingClientRect();
+let activeIndex = 0;
+let minDistance = Infinity;
 
-    cards.forEach((card, index) => {
-      const cardRect = card.getBoundingClientRect();
-      // Centro de la tarjeta
-      const cardCenter = cardRect.left + cardRect.width / 2;
-      // Centro del carrusel
-      const carouselCenter = carouselRect.left + carouselRect.width / 2;
-      const distance = Math.abs(carouselCenter - cardCenter);
-      if (distance < minDistance) {
+cards.forEach((card, index) => {
+    const cardRect = card.getBoundingClientRect();
+    const cardCenter = cardRect.left + cardRect.width / 2;
+    const carouselCenter = carouselRect.left + carouselRect.width / 2;
+    const distance = Math.abs(carouselCenter - cardCenter);
+    if (distance < minDistance) {
         minDistance = distance;
         activeIndex = index;
-      }
-    });
-
-    // Actualizar clases activas en los indicadores
-    number.forEach(number => number.classList.remove('active'));
-    if (number[activeIndex]) {
-      number[activeIndex].classList.add('active');
     }
-  }
+});
 
-  // Actualizar al iniciar
-  updateIndicators();
+number.forEach(number => number.classList.remove('active'));
+if (number[activeIndex]) {
+    number[activeIndex].classList.add('active');
+}
+}
 
-  // Actualizar al hacer scroll en el carrusel
-  carousel.addEventListener('scroll', function() {
-    // Se puede usar requestAnimationFrame para mejorar el rendimiento
+updateIndicators();
+
+carousel.addEventListener('scroll', function() {
     window.requestAnimationFrame(updateIndicators);
-  });
+});
 
-  // (Opcional) Hacer que al hacer clic en un indicador se desplace la tarjeta correspondiente
-  number.forEach(number => {
+number.forEach(number => {
     number.addEventListener('click', function() {
-      const index = Number(this.getAttribute('data-index'));
-      const targetCard = cards[index];
-      if (targetCard) {
+        const index = Number(this.getAttribute('data-index'));
+        const targetCard = cards[index];
+        if (targetCard) {
         targetCard.scrollIntoView({ behavior: 'smooth', inline: 'center' });
-      }
+        }
     });
-  });
+});
