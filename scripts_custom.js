@@ -177,3 +177,20 @@ if (
     experienceYears--;
 }
 document.getElementById("experience-years").textContent = experienceYears;
+
+/* ======================================================
+   MULTI-COLOR: Cambia dinamicamente el color de fondo
+   https://colorsphere.app/
+======================================================= */
+const root = document.documentElement;
+const colores = [
+    '#f39c12', '#DE8D1C', '#DA5818', '#D52413',
+    '#D41233', '#D52413', '#DA5818', '#f39c12'
+];
+let indiceColor = 0;
+function cambiarColorAccent() {
+    root.style.setProperty('--color-accent', colores[indiceColor]);
+    indiceColor = (indiceColor + 1) % colores.length;
+}
+root.style.setProperty('transition', '--color-accent 1s ease-in-out');
+setInterval(cambiarColorAccent, 10000);
