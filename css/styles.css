@@ -471,6 +471,78 @@ section::after {
     animation-delay: 1s;
 }
 
+/* Contenedor de la sección Skills */
+#skills .section-overlay {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#skills .section-overlay h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: var(--font-size-h2);
+    color: var(--color-text);
+}
+
+#skills .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding: 10px;
+    justify-content: center;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#skills .card-grid::-webkit-scrollbar {
+    display: none;
+}
+
+#skills .card {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+}
+
+#skills .card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#skills .card-content {
+    position: absolute;
+    display: initial;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: var(--color-overlay);
+    padding: 10px;
+    margin: 15px;
+    border-radius: var(--border-radius);
+}
+
+#skills .card-content h3 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--color-text);
+}
+
+#skills .card-content p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: var(--color-text);
+}
+
 .card img,
 .portfolio-item img {
     width: 100%;
