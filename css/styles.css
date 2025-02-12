@@ -1,6 +1,6 @@
-/* ==============================================================
-    1. VARIABLES, RESET & ESTILOS GLOBALES
-=============================================================== */
+/* ============================================================
+   1. VARIABLES, RESET & ESTILOS GLOBALES
+============================================================ */
 :root {
     /* Colores */
     --color-accent: #f39c12;
@@ -9,7 +9,7 @@
     --color-text: #fff;
     --color-overlay: rgba(30, 30, 30, 0.85);
 
-    /* Tipografías y tamaños https://fonts.google.com/ */
+    /* Tipografías */
     --font-family: "Exo 2", serif;
     --font-size-base: 16px;
     --font-size-h1: 48px;
@@ -39,7 +39,6 @@
 
 /* Modo Claro */
 body.white-mode {
-    /* Colores */
     --color-bg: #fff;
     --color-bg-secondary: #f1f1f1;
     --color-text: #111;
@@ -49,7 +48,7 @@ body.white-mode {
     --shadow-hover: 0 5px 5px var(--color-accent);
 }
 
-/* Reset & Global */
+/* Reset y estilos básicos */
 * {
     margin: 0;
     padding: 0;
@@ -76,9 +75,9 @@ a {
     color: inherit;
 }
 
-/* ==============================================================
-   2. ANIMACIONES & EFECTOS
-=============================================================== */
+/* ============================================================
+     2. ANIMACIONES & EFECTOS
+  ============================================================ */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -137,11 +136,11 @@ a {
     }
 }
 
-
 @keyframes marquee {
     0% {
         transform: translate(0, 0);
     }
+
     100% {
         transform: translate(-100%, 0);
     }
@@ -159,9 +158,9 @@ a {
     transform: translateY(0);
 }
 
-/* ==============================================================
-   3. ENCABEZADO Y NAVEGACIÓN
-=============================================================== */
+/* ============================================================
+     3. ENCABEZADO Y NAVEGACIÓN
+  ============================================================ */
 header {
     position: fixed;
     top: 0;
@@ -222,9 +221,9 @@ header .logo {
     color: var(--color-accent);
 }
 
-/* ==============================================================
-   4. SECCIONES & FONDOS (PARALLAX, OVERLAY Y TRANSICIÓN)
-=============================================================== */
+/* ============================================================
+     4. SECCIONES & FONDOS, OVERLAY & TRANSICIÓN
+  ============================================================ */
 section {
     padding: 100px 20px;
     background-attachment: fixed;
@@ -233,7 +232,7 @@ section {
     background-size: cover;
     position: relative;
     overflow: hidden;
-    /* scroll-snap-align: center; */
+    scroll-snap-align: center;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -241,7 +240,6 @@ section {
     position: relative;
 }
 
-/* Fondos por sección */
 #hero {
     background: var(--bg-hero) center/cover;
 }
@@ -278,7 +276,6 @@ section {
     background-image: var(--bg-contact);
 }
 
-/* Transición en secciones */
 section::after {
     content: "";
     position: absolute;
@@ -289,15 +286,15 @@ section::after {
     background: radial-gradient(ellipse at center, var(--color-accent) 10%, transparent 80%);
     filter: blur(5px);
     opacity: 0.7;
-    transform: translateY(0%);
+    transform: translateY(0);
     z-index: 0;
 }
 
-/* Overlay en secciones */
+/* Overlays en secciones */
 .section-overlay,
 .section-overlay-about {
     background: var(--color-overlay);
-    padding: 20px 20px;
+    padding: 20px;
     border-radius: var(--border-radius);
     max-width: 1100px;
     margin: auto;
@@ -314,9 +311,9 @@ section::after {
     padding-bottom: 0;
 }
 
-/* ==============================================================
-   5. SECCIÓN HERO
-=============================================================== */
+/* ============================================================
+     5. SECCIÓN HERO
+  ============================================================ */
 .hero {
     height: 100vh;
     position: relative;
@@ -369,9 +366,9 @@ section::after {
     background: #d35400;
 }
 
-/* ==============================================================
-   6. CONTENIDO DE SECCIONES (ACERCA, EXPERIENCIA, ETC.)
-=============================================================== */
+/* ============================================================
+     6. CONTENIDO DE SECCIONES (ACERCA, EXPERIENCIA, ETC.)
+  ============================================================ */
 .about-content,
 .card-grid,
 .portfolio-grid,
@@ -380,7 +377,7 @@ section::after {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    padding: 30px 30px;
+    padding: 30px;
 }
 
 .about-content {
@@ -395,14 +392,12 @@ section::after {
 }
 
 .about-text {
-    margin-left: 25px;
-    margin-right: 25px;
+    margin: 0 25px;
 }
 
 .about-text h1 {
     font-size: var(--font-size-h2);
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .about-text h3 {
@@ -439,7 +434,9 @@ section::after {
     transform: scale(1.05);
 }
 
-/* Contenedor de círculos (fondo decorativo) */
+/* ============================================================
+     7. DECORACIÓN: CÍRCULOS
+  ============================================================ */
 .circle-container {
     position: absolute;
     top: 0;
@@ -481,7 +478,9 @@ section::after {
     animation-delay: 1s;
 }
 
-/* Contenedor de la sección Skills */
+/* ============================================================
+     8. SECCIÓN SKILLS
+  ============================================================ */
 #skills .section-overlay {
     max-width: 1100px;
     margin: 0 auto;
@@ -498,7 +497,7 @@ section::after {
     display: grid;
     grid-template-columns: repeat(3, 300px);
     gap: 20px;
-    max-height: 70vh;
+    /* max-height: 70vh; */
     overflow-y: auto;
     padding: 10px;
     justify-content: center;
@@ -562,7 +561,7 @@ section::after {
 }
 
 #skills .card-content p {
-    margin: 2px 0 8px 0;
+    margin: 2px 0 8px;
     font-size: var(--font-size-text);
     color: var(--color-text);
 }
@@ -580,189 +579,128 @@ section::after {
 }
 
 .marquee-content img {
-    margin: 0 10px; 
+    margin: 0 10px;
     width: auto;
     height: auto;
     border-radius: var(--border-radius);
 }
 
-/* Sección Educación y contenedor */
+/* ============================================================
+   Sección Educación y Línea de Tiempo UX Atractiva
+============================================================ */
+/* Sección Educación */
 #education {
     padding: 60px 0;
-    background: #f0f4f8;
     position: relative;
+    background: var(--color-bg);
 }
 
 #education .section-overlay {
-    width        : 90%;
-    max-width    : 1200px;
-    margin       : auto;
-    background   : #fff;
-    border-radius: 10px;
-    padding      : 40px 20px;
-    box-shadow   : 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: var(--border-radius);
 }
 
 #education h2 {
-    text-align   : center;
-    font-size    : 2.5rem;
-    margin-bottom: 50px;
-    color        : #333;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: var(--color-text);
 }
 
-/* Línea de tiempo */
-.timeline {
-    position: relative;
-    padding : 20px 0;
+.edu-container {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
 }
 
-/* Línea central */
-.timeline::before {
-    content   : '';
-    position  : absolute;
-    top       : 0;
-    bottom    : 0;
-    left      : 50%;
-    width     : 2px;
-    background: #ccc;
-    transform : translateX(-50%);
+.edu-left {
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-/* Elementos de la línea de tiempo */
-.timeline-item {
-    position     : relative;
-    width        : 50%;
-    padding      : 20px 40px;
-    box-sizing   : border-box;
-    margin-bottom: 40px;
-}
-
-/* Alternar posición de los elementos */
-.timeline-item:nth-child(odd) {
-    left      : 0;
-    text-align: right;
-}
-
-.timeline-item:nth-child(even) {
-    left      : 50%;
+.edu-card {
+    padding: 20px;
     text-align: left;
+    background: var(--color-bg-secondary);
+    border-radius: var(--border-radius);
+    box-shadow: var(--color-overlay);
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 10px;
 }
 
-/* Icono o miniatura de cada hito */
-.timeline-icon {
-    position     : absolute;
-    top          : 20px;
-    width        : 60px;
-    height       : 60px;
-    border-radius: 50%;
-    overflow     : hidden;
-    background   : #007bff;
-    border       : 4px solid #fff;
-    z-index      : 1;
+.edu-card:hover {
+    background: var(--color-accent);
+    color: var(--color-text);
 }
 
-.timeline-item:nth-child(odd) .timeline-icon {
-    right: -30px;
+.edu-card i {
+    margin-right: 5px;
+    color: #509d1f;
 }
 
-.timeline-item:nth-child(even) .timeline-icon {
-    left: -30px;
+.edu-card.active {
+    background: var(--color-accent);
+    color: var(--color-text);
 }
 
-.timeline-icon img {
-    width     : 100%;
-    height    : 100%;
+.edu-right {
+    flex: 0 0 70%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edu-right img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-radius: var(--border-radius);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(0);
+    opacity: 1;
 }
 
-/* Contenido de cada hito */
-.timeline-content {
-    background   : #fff;
-    padding      : 20px;
-    border-radius: 8px;
-    position     : relative;
-    box-shadow   : 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition   : transform 0.3s, box-shadow 0.3s;
+.slide-out {
+    transform: translateX(-100px);
+    opacity: 0;
 }
 
-/* Separación respecto a la línea */
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-right: 70px;
+.slide-in {
+    transform: translateX(0);
+    opacity: 1;
 }
 
-.timeline-item:nth-child(even) .timeline-content {
-    margin-left: 70px;
-}
-
-/* Conector tipo flecha */
-.timeline-item:nth-child(odd) .timeline-content::after {
-    content     : "";
-    position    : absolute;
-    top         : 20px;
-    right       : -15px;
-    border-width: 10px 0 10px 15px;
-    border-style: solid;
-    border-color: transparent transparent transparent #fff;
-}
-
-.timeline-item:nth-child(even) .timeline-content::after {
-    content     : "";
-    position    : absolute;
-    top         : 20px;
-    left        : -15px;
-    border-width: 10px 15px 10px 0;
-    border-style: solid;
-    border-color: transparent #fff transparent transparent;
-}
-
-.timeline-content h3 {
-    font-size: 1.8rem;
-    margin   : 0 0 10px;
-    color    : #007bff;
-}
-
-.timeline-content p {
-    font-size: 1rem;
-    color    : #666;
-}
-
-/* Efecto hover para interactividad */
-.timeline-content:hover {
-    transform : translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
-
-/* Responsividad */
 @media screen and (max-width: 768px) {
-    .timeline::before {
-        left: 20px;
+    .edu-container {
+        flex-direction: column;
     }
 
-    .timeline-item {
-        width        : 100%;
-        padding-left : 70px;
-        padding-right: 25px;
-        text-align   : left;
-        left         : 0 !important;
+    .edu-left, .edu-right {
+        flex: 0 0 100%;
     }
 
-    .timeline-icon {
-        left : 10px !important;
-        right: auto;
-    }
-
-    .timeline-item .timeline-content {
-        margin: 0 0 0 80px;
-    }
-
-    .timeline-item .timeline-content::after {
-        left        : -15px;
-        border-width: 10px 15px 10px 0;
-        border-style: solid;
-        border-color: transparent #fff transparent transparent;
+    .edu-right img {
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
     }
 }
 
+
+/* ============================================================
+     10. COMPONENTES COMUNES: TARJETAS, CARRUSEL, ETC.
+  ============================================================ */
 .card img,
 .portfolio-item img {
     width: 100%;
@@ -788,7 +726,6 @@ section::after {
 .testimonial:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
-    transition: var(--transition-base);
 }
 
 .card-content {
@@ -830,7 +767,7 @@ section::after {
     padding: 15px;
 }
 
-/* --- Carrusel y Tarjetas --- */
+/* Carrusel */
 .carousel-wrapper {
     position: relative;
 }
@@ -844,12 +781,10 @@ section::after {
     -webkit-overflow-scrolling: touch;
 }
 
-/* Oculta la scrollbar en WebKit */
 .carousel::-webkit-scrollbar {
     display: none;
 }
 
-/* Cada tarjeta */
 .carousel .card {
     flex: 0 0 80%;
     scroll-snap-align: center;
@@ -860,13 +795,11 @@ section::after {
     transition: transform 0.3s ease;
 }
 
-/* Hover para PC */
 .carousel .card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
 }
 
-/* --- Numeros del Carrusel --- */
 .carousel-number {
     text-align: center;
     margin-top: 10px;
@@ -891,6 +824,7 @@ section::after {
     background: var(--color-accent);
 }
 
+/* Servicios & Testimonios */
 .service-card,
 .testimonial {
     padding: 20px;
@@ -917,6 +851,7 @@ section::after {
     color: var(--color-accent);
 }
 
+/* Contacto */
 .contact-form {
     max-width: 600px;
     margin: auto;
@@ -940,7 +875,9 @@ section::after {
     min-height: 120px;
 }
 
-/* 8. Piefer, Mascota y desplazarse hasta la cima */
+/* ============================================================
+     11. PIE DE PÁGINA, REDES SOCIALES & SCROLL TOP
+  ============================================================ */
 footer {
     background: var(--color-bg-secondary);
     padding: 20px;
@@ -985,9 +922,7 @@ footer {
     color: white;
 }
 
-/* ==============================================================
-   8. REDES SOCIALES & INDICADORES DE SECCIÓN
-=============================================================== */
+/* Redes Sociales & Sección Indicadores */
 .social-sidebar {
     position: fixed;
     top: 50%;
@@ -1108,10 +1043,10 @@ footer {
     transform: scale(1.2);
 }
 
-/* ==============================================================
-   9. RESPONSIVO
-=============================================================== */
-@media (max-width: 968px) {
+/* ============================================================
+     12. RESPONSIVO
+  ============================================================ */
+@media (max-width: 768px) {
     .nav-toggle {
         display: block;
     }
@@ -1157,11 +1092,39 @@ footer {
     .about-img img {
         width: 60%;
     }
+
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+        text-align: left;
+        left: 0 !important;
+    }
+
+    .timeline-icon {
+        left: 10px !important;
+        right: auto;
+    }
+
+    .timeline-item .timeline-content {
+        margin: 0 0 0 80px;
+    }
+
+    .timeline-item .timeline-content::after {
+        left: -15px;
+        border-width: 10px 15px 10px 0;
+        border-style: solid;
+        border-color: transparent var(--color-accent) transparent transparent;
+    }
 }
 
-/* ==============================================================
-   10. SMOOTH EFFECT ENTRE IMÁGENES
-=============================================================== */
+/* ============================================================
+     13. SMOOTH EFFECT ENTRE IMÁGENES
+  ============================================================ */
 .image-container {
     position: relative;
     overflow: visible;
