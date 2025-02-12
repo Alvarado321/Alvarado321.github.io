@@ -32,8 +32,6 @@
     --bg-skills: url("");
     --bg-education: url("https://img.freepik.com/fotos-premium/ilustracion-pixel-art-laboratorio-ciencias_36682-108353.jpg");
     --bg-portfolio: url("");
-    --bg-services: url("https://img0.reactor.cc/pics/post/1Eni1-Pixel-Gif-Pixel-Art-%D0%B7%D0%B8%D0%BC%D0%B0-4972436.gif");
-    --bg-testimonials: url("");
     --bg-contact: url("");
 }
 
@@ -264,14 +262,6 @@ section {
     background-image: var(--bg-portfolio);
 }
 
-#services {
-    background-image: var(--bg-services);
-}
-
-#testimonials {
-    background-image: var(--bg-testimonials);
-}
-
 #contact {
     background-image: var(--bg-contact);
 }
@@ -371,9 +361,7 @@ section::after {
   ============================================================ */
 .about-content,
 .card-grid,
-.portfolio-grid,
-.services-grid,
-.testimonials-grid {
+.portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
@@ -710,9 +698,7 @@ section::after {
 }
 
 .card,
-.portfolio-item,
-.service-card,
-.testimonial {
+.portfolio-item {
     background: var(--color-bg-secondary);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -721,9 +707,7 @@ section::after {
 }
 
 .card:hover,
-.portfolio-item:hover,
-.service-card:hover,
-.testimonial:hover {
+.portfolio-item:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
 }
@@ -823,34 +807,6 @@ section::after {
 .carousel-number .number:hover {
     background: var(--color-accent);
 }
-
-/* Servicios & Testimonios */
-.service-card,
-.testimonial {
-    padding: 20px;
-    text-align: center;
-}
-
-.service-card h3 {
-    margin-bottom: 10px;
-    color: var(--color-accent);
-}
-
-.service-card p,
-.testimonial p {
-    font-size: var(--font-size-text);
-}
-
-.testimonial p {
-    font-style: italic;
-    margin-bottom: 10px;
-}
-
-.testimonial span {
-    font-weight: bold;
-    color: var(--color-accent);
-}
-
 /* Contacto */
 .contact-form {
     max-width: 600px;
