@@ -233,7 +233,7 @@ section {
     background-size: cover;
     position: relative;
     overflow: hidden;
-    scroll-snap-align: center;
+    /* scroll-snap-align: center; */
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -584,6 +584,183 @@ section::after {
     width: auto;
     height: auto;
     border-radius: var(--border-radius);
+}
+
+/* Sección Educación y contenedor */
+#education {
+    padding: 60px 0;
+    background: #f0f4f8;
+    position: relative;
+}
+
+#education .section-overlay {
+    width        : 90%;
+    max-width    : 1200px;
+    margin       : auto;
+    background   : #fff;
+    border-radius: 10px;
+    padding      : 40px 20px;
+    box-shadow   : 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#education h2 {
+    text-align   : center;
+    font-size    : 2.5rem;
+    margin-bottom: 50px;
+    color        : #333;
+}
+
+/* Línea de tiempo */
+.timeline {
+    position: relative;
+    padding : 20px 0;
+}
+
+/* Línea central */
+.timeline::before {
+    content   : '';
+    position  : absolute;
+    top       : 0;
+    bottom    : 0;
+    left      : 50%;
+    width     : 2px;
+    background: #ccc;
+    transform : translateX(-50%);
+}
+
+/* Elementos de la línea de tiempo */
+.timeline-item {
+    position     : relative;
+    width        : 50%;
+    padding      : 20px 40px;
+    box-sizing   : border-box;
+    margin-bottom: 40px;
+}
+
+/* Alternar posición de los elementos */
+.timeline-item:nth-child(odd) {
+    left      : 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left      : 50%;
+    text-align: left;
+}
+
+/* Icono o miniatura de cada hito */
+.timeline-icon {
+    position     : absolute;
+    top          : 20px;
+    width        : 60px;
+    height       : 60px;
+    border-radius: 50%;
+    overflow     : hidden;
+    background   : #007bff;
+    border       : 4px solid #fff;
+    z-index      : 1;
+}
+
+.timeline-item:nth-child(odd) .timeline-icon {
+    right: -30px;
+}
+
+.timeline-item:nth-child(even) .timeline-icon {
+    left: -30px;
+}
+
+.timeline-icon img {
+    width     : 100%;
+    height    : 100%;
+    object-fit: cover;
+}
+
+/* Contenido de cada hito */
+.timeline-content {
+    background   : #fff;
+    padding      : 20px;
+    border-radius: 8px;
+    position     : relative;
+    box-shadow   : 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition   : transform 0.3s, box-shadow 0.3s;
+}
+
+/* Separación respecto a la línea */
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 70px;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 70px;
+}
+
+/* Conector tipo flecha */
+.timeline-item:nth-child(odd) .timeline-content::after {
+    content     : "";
+    position    : absolute;
+    top         : 20px;
+    right       : -15px;
+    border-width: 10px 0 10px 15px;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+}
+
+.timeline-item:nth-child(even) .timeline-content::after {
+    content     : "";
+    position    : absolute;
+    top         : 20px;
+    left        : -15px;
+    border-width: 10px 15px 10px 0;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+}
+
+.timeline-content h3 {
+    font-size: 1.8rem;
+    margin   : 0 0 10px;
+    color    : #007bff;
+}
+
+.timeline-content p {
+    font-size: 1rem;
+    color    : #666;
+}
+
+/* Efecto hover para interactividad */
+.timeline-content:hover {
+    transform : translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsividad */
+@media screen and (max-width: 768px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item {
+        width        : 100%;
+        padding-left : 70px;
+        padding-right: 25px;
+        text-align   : left;
+        left         : 0 !important;
+    }
+
+    .timeline-icon {
+        left : 10px !important;
+        right: auto;
+    }
+
+    .timeline-item .timeline-content {
+        margin: 0 0 0 80px;
+    }
+
+    .timeline-item .timeline-content::after {
+        left        : -15px;
+        border-width: 10px 15px 10px 0;
+        border-style: solid;
+        border-color: transparent #fff transparent transparent;
+    }
 }
 
 .card img,
