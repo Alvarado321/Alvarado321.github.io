@@ -271,7 +271,7 @@ function initCarousel() {
             const index = Number(this.getAttribute('data-index'))
             const targetCard = cards[index]
             if (targetCard) {
-                targetCard.scrollIntoView({ behavior: 'smooth', inline: 'center' })
+                targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
             }
         })
     })

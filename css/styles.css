@@ -230,7 +230,7 @@ section {
     background-size: cover;
     position: relative;
     overflow: hidden;
-    scroll-snap-align: center;
+    /* scroll-snap-align: center; */
     min-height: 100vh;
     display: flex;
     align-items: center;
