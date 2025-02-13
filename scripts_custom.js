@@ -314,35 +314,117 @@ function initEducationCards() {
 }
 
 /* ============================================================== 
-     10. PROYECTOS: Filtrado de botones según categoria
-  ================================================================ */
+   10. PROYECTOS Y MODAL: Filtrado, animación y visualización en modal
+=============================================================== */
 function initProyectos() {
     const filterButtons = document.querySelectorAll("#proyectos .filter-btn");
-    const projectCards = document.querySelectorAll("#proyectos .project-card");
+    const projectCards = Array.from(document.querySelectorAll("#proyectos .project-card"));
 
     filterButtons.forEach(btn => {
         btn.addEventListener("click", () => {
-            // Quitar la clase 'active' de todos los botones y asignarla al botón clickeado
             filterButtons.forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
 
             const filterValue = btn.getAttribute("data-filter");
+            const visibleCards = [];
 
             projectCards.forEach(card => {
-                // Si el filtro es "all", mostramos todos los proyectos
-                if (filterValue === "all") {
-                    card.classList.remove("hide");
+                const category = card.getAttribute("data-category");
+                if (filterValue === "all" || category === filterValue) {
+                    card.style.display = "block";
+                    visibleCards.push(card);
                 } else {
-                    // Comparamos data-category del proyecto con el filtro seleccionado
-                    const category = card.getAttribute("data-category");
-                    if (category === filterValue) {
-                        card.classList.remove("hide");
-                    } else {
-                        card.classList.add("hide");
-                    }
+                    card.style.display = "none";
                 }
             });
+
+            visibleCards.forEach((card, index) => {
+                card.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+                card.style.transform = "translateX(-50px)";
+                card.style.opacity = "0";
+
+                card.offsetHeight;
+
+                setTimeout(() => {
+                    card.style.transform = "translateX(0)";
+                    card.style.opacity = "1";
+                }, index * 100);
+            });
         });
+    });
+
+    projectCards.forEach(card => {
+        card.addEventListener("click", () => {
+            if (card.style.display !== "none") {
+                const img = card.querySelector(".project-front img");
+                if (img) {
+                    openModal(img.src, false);
+                } else {
+                    const video = card.querySelector(".project-front video");
+                    if (video) {
+                        const source = video.querySelector("source");
+                        if (source) {
+                            openModal(source.src, true);
+                        }
+                    }
+                }
+            }
+        });
+    });
+}
+
+function openModal(src, isVideo) {
+    const modal = document.getElementById("modal");
+    const modalContentContainer = document.getElementById("modal-content");
+
+    modalContentContainer.innerHTML = "";
+
+    if (isVideo) {
+        const videoEl = document.createElement("video");
+        videoEl.controls = true;
+        videoEl.autoplay = true;
+        videoEl.muted = false;
+        videoEl.loop = true;
+        videoEl.style.width = "100%";
+        videoEl.style.height = "auto";
+        const sourceEl = document.createElement("source");
+        sourceEl.src = src;
+        sourceEl.type = "video/mp4";
+        videoEl.appendChild(sourceEl);
+        modalContentContainer.appendChild(videoEl);
+    } else {
+        const imgEl = document.createElement("img");
+        imgEl.src = src;
+        imgEl.alt = "Imagen ampliada";
+        modalContentContainer.appendChild(imgEl);
+    }
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    const modal = document.getElementById("modal");
+    const modalContentContainer = document.getElementById("modal-content");
+
+    const videoEl = modalContentContainer.querySelector("video");
+    if (videoEl) {
+        videoEl.pause();
+        videoEl.currentTime = 0;
+    }
+
+    modal.style.display = "none";
+    modalContentContainer.innerHTML = "";
+}
+
+function initModal() {
+    const modal = document.getElementById("modal");
+    const closeBtn = document.getElementById("modal-close");
+
+    closeBtn.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
     });
 }
 
@@ -387,6 +469,7 @@ function init() {
     initCarousel()
     initEducationCards()
     initProyectos()
+    initModal()
     initContacto()
 }
 document.addEventListener('DOMContentLoaded', init)
