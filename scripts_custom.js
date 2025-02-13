@@ -313,6 +313,33 @@ function initEducationCards() {
     }
 }
 
+/* ============================================================== 
+     10. CONTACTO: Captura datos y abre Gmail con el mensaje 
+  ================================================================ */
+function initContacto() {
+    const form = document.querySelector('#contact .contact-form')
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault()
+            const nombre = document.getElementById('nombre').value
+            const correo = document.getElementById('correo').value
+            const mensaje = document.getElementById('mensaje').value
+            const asunto = encodeURIComponent("Interesado en tus servicios")
+            const cuerpo = encodeURIComponent(`Hola Ronal,
+
+            Mi nombre es ${nombre}.
+            Mi email es ${correo}.
+
+            ${mensaje}
+
+            Saludos,`)
+
+            const mailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=alvarado_aries_20@hotmail.com&su=${asunto}&body=${cuerpo}`
+            window.open(mailURL, '_blank')
+        })
+    }
+}
+
 /* ==============================================================
      INIT: Inicializa todos los scripts al cargar el DOM
   ================================================================ */
@@ -326,5 +353,6 @@ function init() {
     initMultiColor()
     initCarousel()
     initEducationCards()
+    initContacto()
 }
 document.addEventListener('DOMContentLoaded', init)

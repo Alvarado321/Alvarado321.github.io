@@ -665,23 +665,6 @@ section::after {
     opacity: 1;
 }
 
-@media screen and (max-width: 768px) {
-    .edu-container {
-        flex-direction: column;
-    }
-
-    .edu-left,
-    .edu-right {
-        flex: 0 0 100%;
-    }
-
-    .edu-right img {
-        height: auto;
-        max-height: 400px;
-        object-fit: cover;
-    }
-}
-
 /* ============================================================
      10. COMPONENTES COMUNES: TARJETAS, CARRUSEL, ETC.
   ============================================================ */
@@ -808,27 +791,130 @@ section::after {
 /* ============================================================
      11. SECCIÓN CONTACTO
   ============================================================ */
-.contact-form {
-    max-width: 600px;
-    margin: auto;
-    text-align: left;
+/* ============================================================
+   #contact - Sección de Contacto
+============================================================ */
+#contact {
+    padding: 100px 20px;
+    position: relative;
 }
 
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 12px 15px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: var(--border-radius);
-    font-size: 16px;
-    background: var(--color-bg-secondary);
+/* Overlay de la sección */
+#contact .section-overlay {
+    padding: 50px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
     color: var(--color-text);
 }
 
-.contact-form textarea {
-    resize: vertical;
-    min-height: 120px;
+/* Contenedor interno y animación de entrada */
+#contact .contact-container {
+    animation: fadeInUp 1s ease-out;
+}
+
+#contact h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#contact p {
+    font-size: 1.1em;
+    margin-bottom: 40px;
+}
+
+/* Formulario de contacto */
+#contact .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Grupo de campos con icono y efecto Floating Label */
+#contact .form-group {
+    position: relative;
+}
+
+/* Iconos (FontAwesome) */
+#contact .form-group i {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #aaa;
+    transition: transform 0.3s ease, color 0.3s ease;
+    z-index: 2;
+}
+
+#contact .form-group:focus-within i {
+    color: var(--color-accent);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Inputs y Textarea: se deja espacio para el icono */
+#contact .form-group input,
+#contact .form-group textarea {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    background: #fff;
+    color: #333;
+    transition: box-shadow 0.3s ease;
+}
+
+#contact .form-group input:focus,
+#contact .form-group textarea:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--color-accent);
+}
+
+/* Ocultar placeholder para usar el label flotante */
+#contact .form-group input::placeholder,
+#contact .form-group textarea::placeholder {
+    color: transparent;
+}
+
+/* Etiqueta flotante */
+#contact .form-group label {
+    position: absolute;
+    top: 50%;
+    left: 45px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: #aaa;
+}
+
+/* Efecto cuando el input tiene foco o contiene texto */
+#contact .form-group input:focus+label,
+#contact .form-group input:not(:placeholder-shown)+label,
+#contact .form-group textarea:focus+label,
+#contact .form-group textarea:not(:placeholder-shown)+label {
+    top: 0;
+    transform: translateY(-50%) scale(0.9);
+    background: var(--color-accent);
+    padding: 0 5px;
+    color: #fff;
+}
+
+/* Botón de envío */
+#contact .btn {
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: var(--font-size-base);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#contact .btn:hover {
+    background: var(--color-accent);
 }
 
 /* ============================================================
@@ -1073,6 +1159,21 @@ footer {
         width: 80%;
         height: auto;
         object-fit: contain;
+    }
+    
+    .edu-container {
+        flex-direction: column;
+    }
+
+    .edu-left,
+    .edu-right {
+        flex: 0 0 100%;
+    }
+
+    .edu-right img {
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
     }
 }
 
