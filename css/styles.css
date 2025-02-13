@@ -31,7 +31,7 @@
     --bg-experience: url("https://i.pinimg.com/originals/d0/01/08/d00108e2a403bc44c2aa529043158701.gif");
     --bg-skills: url("");
     --bg-education: url("https://img.freepik.com/fotos-premium/ilustracion-pixel-art-laboratorio-ciencias_36682-108353.jpg");
-    --bg-portfolio: url("");
+    --bg-proyectos: url("");
     --bg-contact: url("");
 }
 
@@ -258,8 +258,8 @@ section {
     background-image: var(--bg-education);
 }
 
-#portfolio {
-    background-image: var(--bg-portfolio);
+#proyectos {
+    background-image: var(--bg-proyectos);
 }
 
 #contact {
@@ -361,7 +361,7 @@ section::after {
   ============================================================ */
 .about-content,
 .card-grid,
-.portfolio-grid {
+.proyectos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
@@ -690,7 +690,7 @@ section::after {
      10. COMPONENTES COMUNES: TARJETAS, CARRUSEL, ETC.
   ============================================================ */
 .card img,
-.portfolio-item img {
+.proyectos-item img {
     width: 100%;
     border-radius: var(--border-radius);
     object-fit: cover;
@@ -698,7 +698,7 @@ section::after {
 }
 
 .card,
-.portfolio-item {
+.proyectos-item {
     background: var(--color-bg-secondary);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -707,7 +707,7 @@ section::after {
 }
 
 .card:hover,
-.portfolio-item:hover {
+.proyectos-item:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-hover);
 }
@@ -807,6 +807,7 @@ section::after {
 .carousel-number .number:hover {
     background: var(--color-accent);
 }
+
 /* Contacto */
 .contact-form {
     max-width: 600px;
@@ -1002,7 +1003,11 @@ footer {
 /* ============================================================
      12. RESPONSIVO
   ============================================================ */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+    .section-overlay {
+        max-width: 100% !important;
+    }
+
     .nav-toggle {
         display: block;
     }
@@ -1049,32 +1054,40 @@ footer {
         width: 60%;
     }
 
-    .timeline::before {
-        left: 20px;
+    .card {
+        max-width: 100%;
+        margin: 10px auto;
     }
 
-    .timeline-item {
+    .card-grid {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: start !important;
+    }
+
+    .card-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-details {
+        order: 1;
         width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
         text-align: left;
-        left: 0 !important;
+        margin-bottom: 15px;
     }
 
-    .timeline-icon {
-        left: 10px !important;
-        right: auto;
+    .card-image {
+        order: 2;
+        width: 100%;
+        margin: 0;
+        text-align: center;
     }
 
-    .timeline-item .timeline-content {
-        margin: 0 0 0 80px;
-    }
-
-    .timeline-item .timeline-content::after {
-        left: -15px;
-        border-width: 10px 15px 10px 0;
-        border-style: solid;
-        border-color: transparent var(--color-accent) transparent transparent;
+    .card-image img {
+        width: 80%;
+        height: auto;
+        object-fit: contain;
     }
 }
 
