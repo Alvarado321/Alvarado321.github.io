@@ -314,7 +314,40 @@ function initEducationCards() {
 }
 
 /* ============================================================== 
-     10. CONTACTO: Captura datos y abre Gmail con el mensaje 
+     10. PROYECTOS: Filtrado de botones según categoria
+  ================================================================ */
+function initProyectos() {
+    const filterButtons = document.querySelectorAll("#proyectos .filter-btn");
+    const projectCards = document.querySelectorAll("#proyectos .project-card");
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            // Quitar la clase 'active' de todos los botones y asignarla al botón clickeado
+            filterButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const filterValue = btn.getAttribute("data-filter");
+
+            projectCards.forEach(card => {
+                // Si el filtro es "all", mostramos todos los proyectos
+                if (filterValue === "all") {
+                    card.classList.remove("hide");
+                } else {
+                    // Comparamos data-category del proyecto con el filtro seleccionado
+                    const category = card.getAttribute("data-category");
+                    if (category === filterValue) {
+                        card.classList.remove("hide");
+                    } else {
+                        card.classList.add("hide");
+                    }
+                }
+            });
+        });
+    });
+}
+
+/* ============================================================== 
+     11. CONTACTO: Captura datos y abre Gmail con el mensaje 
   ================================================================ */
 function initContacto() {
     const form = document.querySelector('#contact .contact-form')
@@ -353,6 +386,7 @@ function init() {
     initMultiColor()
     initCarousel()
     initEducationCards()
+    initProyectos()
     initContacto()
 }
 document.addEventListener('DOMContentLoaded', init)
