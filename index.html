@@ -17,7 +17,8 @@
 
 <body>
 	<div class="social-sidebar">
-		<a href="https://www.linkedin.com/in/ronal-antony-alvarado-vega-70a89030a/" target="_blank" data-title="Linkedin">
+		<a href="https://www.linkedin.com/in/ronal-antony-alvarado-vega-70a89030a/" target="_blank"
+			data-title="Linkedin">
 			<img src="https://img.icons8.com/color/49/000000/linkedin.png" alt="Linkedin">
 		</a>
 		<a href="https://github.com/Alvarado321" target="_blank" data-title="Github">
@@ -40,10 +41,10 @@
 	<div class="section-indicators">
 		<a href="#hero" class="indicator" data-tooltip="Inicio">⦿</a>
 		<a href="#about" class="indicator" data-tooltip="Acerca de mí">⦿</a>
+		<a href="#proyectos" class="indicator" data-tooltip="Proyectos">⦿</a>
 		<a href="#experience" class="indicator" data-tooltip="Experiencia">⦿</a>
 		<a href="#skills" class="indicator" data-tooltip="Habilidades">⦿</a>
 		<a href="#education" class="indicator" data-tooltip="Educación">⦿</a>
-		<a href="#proyectos" class="indicator" data-tooltip="Proyectos">⦿</a>
 		<a href="#contact" class="indicator" data-tooltip="Contacto">⦿</a>
 	</div>
 
@@ -54,10 +55,10 @@
 			<ul>
 				<li><a href="#hero">Inicio</a></li>
 				<li><a href="#about">Acerca</a></li>
+				<li><a href="#proyectos">Proyectos</a></li>
 				<li><a href="#experience">Experiencia</a></li>
 				<li><a href="#skills">Habilidades</a></li>
 				<li><a href="#education">Educación</a></li>
-				<li><a href="#proyectos">Proyectos</a></li>
 				<li><a href="#contact">Contacto</a></li>
 				<li><button id="theme-toggle">🌙</button></li>
 			</ul>
@@ -101,6 +102,284 @@
 				<div class="about-img">
 					<img src="img/ronal.png" alt="Perfil profesional">
 				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="proyectos">
+		<div class="parallax-bg"></div>
+		<div class="projects-overlay">
+			<h2>Proyectos Destacados</h2>
+			<p class="subtitle">
+				Explora mis trabajos más relevantes en <strong>desarrollo web</strong>, <strong>IA</strong>,
+				<strong>diseño 3D</strong> y más.
+			</p>
+			<div class="filters">
+				<button class="filter-btn active" data-filter="all">Todos</button>
+				<button class="filter-btn" data-filter="web">Web</button>
+				<button class="filter-btn" data-filter="ai">IA</button>
+				<button class="filter-btn" data-filter="games">Juegos</button>
+			</div>
+			<div class="projects-grid">
+				<div class="project-card" data-category="web">
+					<div class="project-inner">
+						<div class="project-front">
+							<img src="img/proyecto_web1.png" alt="Proyecto Web">
+							<div class="project-info">
+								<h3>EMPRESA RISAI</h3>
+								<p>
+									Proyecto empresarial centrado en la detección de rostros, comparación de objetos y
+									gestión de usuarios.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Incluye autenticación de usuarios, panel de administración y utilización de diversas
+								herramientas AWS.
+							</p>
+							<a href="#proyectos" class="btn-project">Recurso privado</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-card" data-category="games">
+					<div class="project-inner">
+						<div class="project-front">
+							<img src="img/proyecto_juegos1.gif" alt="Proyecto Juegos">
+							<div class="project-info">
+								<h3>MODELADO 3D</h3>
+								<p>
+									Centrado en la popular plataforma Minecraft. Modelo aracnido con animaciones y
+									estética única.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Incluye mundo personalizado, diálogos, ataques dinámicos e historial. Es un proyecto
+								ambicioso que actualmente está a la venta.
+							</p>
+							<a href="https://builtbybit.com/resources/survival-setup-and-arachnid-dimension.30343/"
+								target="_blank" class="btn-project">Ver producto</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-card" data-category="ai">
+					<div class="project-inner">
+						<div class="project-front">
+							<img src="img/proyecto_ia1.png" alt="Proyecto IA">
+							<div class="project-info">
+								<h3>PROYECTO IA</h3>
+								<p>
+									Gestor de predicciones, gráficos y algoritmos avanzados, ideal para la toma de
+									decisiones.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Cuenta con modelos entrenados de gran envergadura, capaces de adaptarse a todo tipo de
+								datos empresariales. Escalable y complementado con Excel y otras herramientas.
+							</p>
+							<a href="#proyectos" class="btn-project">Recurso privado</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-card" data-category="web">
+					<div class="project-inner">
+						<div class="project-front">
+							<img src="img/proyecto_web2.png" alt="Proyecto Web">
+							<div class="project-info">
+								<h3>CALENDARIO DINÁMICO</h3>
+								<p>
+									Sistema CRUD completo de eventos y fechas personalizables, desarrollado en Laravel
+									sin necesidad de APIs.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Incluye funciones avanzadas, rango de fechas, múltiples eventos, sistema de
+								notificaciones y está construido completamente en JavaScript, con alta escalabilidad.
+							</p>
+							<a href="#proyectos" class="btn-project">Recurso privado</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-card" data-category="web">
+					<div class="project-inner">
+						<div class="project-front">
+							<img src="img/proyecto_web3.png" alt="Proyecto Web">
+							<div class="project-info">
+								<h3>COMISIONES PERÚ</h3>
+								<p>
+									Visualización y gestión en tiempo real de comisiones, enfocado en empresas de
+									contabilidad y finanzas.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Grupo Wesc SAC presta servicios a diversas empresas en Perú. Cuenta con un equipo de
+								desarrolladores junior supervisado por mí.
+							</p>
+							<a href="https://grupowesc.com/" target="_blank" class="btn-project">Página web en curso</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-card" data-category="web">
+					<div class="project-inner">
+						<div class="project-front">
+							<img src="img/proyecto_web4.png" alt="Proyecto Web">
+							<div class="project-info">
+								<h3>GESTOR DE PLANILLAS</h3>
+								<p>
+									Sistema para la gestión integral de planillas en diversos ámbitos empresariales.
+									Incluye control de usuarios, empresas y categorías.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Desarrollado completamente en Laravel.
+							</p>
+							<a href="#proyectos" class="btn-project">Recurso privado</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-card" data-category="web">
+					<div class="project-inner">
+						<div class="project-front">
+							<img src="img/proyecto_web5.png" alt="Proyecto Web">
+							<div class="project-info">
+								<h3>GESTOR DE PRODUCTOS</h3>
+								<p>
+									Sistema para la gestión de productos, con aplicación de tarifas, inventarios,
+									códigos QR y más.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Incluye módulos de venta, facturación, cotización, multi-organización, APIs, envío de
+								correos electrónicos y soporte para múltiples empresas.
+							</p>
+							<a href="#proyectos" class="btn-project">Recurso privado</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-card" data-category="games">
+					<div class="project-inner">
+						<div class="project-front">
+							<video controls autoplay muted loop poster="img/proyecto_juegos2.mp4">
+								<source src="img/proyecto_juegos2.mp4" type="video/mp4">
+								Tu navegador no soporta el elemento video.
+							</video>
+							<div class="project-info">
+								<h3>ANIMACIONES Y EFECTOS</h3>
+								<p>
+									Control de efectos, sonidos, interacciones y uso de plugins públicos y privados.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Chat personalizado sin precedentes en la plataforma Minecraft. Sistema escalable y
+								adaptable a cualquier servidor.
+							</p>
+							<a href="https://www.youtube.com/watch?v=P_ri8a9hFFQ" target="_blank"
+								class="btn-project">Ver video</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-card" data-category="games">
+					<div class="project-inner">
+						<div class="project-front">
+							<video controls autoplay muted loop poster="">
+								<source src="" type="video/mp4">
+								Tu navegador no soporta el elemento video.
+							</video>
+							<div class="project-info">
+								<h3>AGREGANDO..</h3>
+								<p>
+									Actualmente estoy recopilando mas contenido.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Se actualizará pronto :)
+							</p>
+							<a href="" target="_blank" class="btn-project">Pronto..</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-card" data-category="ai">
+					<div class="project-inner">
+						<div class="project-front">
+							<video controls autoplay muted loop poster="">
+								<source src="" type="video/mp4">
+								Tu navegador no soporta el elemento video.
+							</video>
+							<div class="project-info">
+								<h3>AGREGANDO..</h3>
+								<p>
+									Actualmente estoy recopilando mas contenido.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Se actualizará pronto :)
+							</p>
+							<a href="" target="_blank" class="btn-project">Pronto..</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="project-card" data-category="ai">
+					<div class="project-inner">
+						<div class="project-front">
+							<video controls autoplay muted loop poster="">
+								<source src="" type="video/mp4">
+								Tu navegador no soporta el elemento video.
+							</video>
+							<div class="project-info">
+								<h3>AGREGANDO..</h3>
+								<p>
+									Actualmente estoy recopilando mas contenido.
+								</p>
+							</div>
+						</div>
+						<div class="project-back">
+							<h3>Detalles</h3>
+							<p>
+								Se actualizará pronto :)
+							</p>
+							<a href="" target="_blank" class="btn-project">Pronto..</a>
+						</div>
+					</div>
+				</div>
+
 			</div>
 		</div>
 	</section>
@@ -465,14 +744,6 @@
 						<h3><i class="fas fa-school"></i> Educación Secundaria</h3>
 						<p>Marcial Acharán y Smith (2008-2013)</p>
 					</div>
-					<div class="edu-card" data-img="img/not_found.png">
-						<h3><i class="fas fa-book-open"></i> Educación Primaria</h3>
-						<p>Municipal (2002-2007)</p>
-					</div>
-					<div class="edu-card" data-img="img/not_found.png">
-						<h3><i class="fas fa-child"></i> Educación Inicial</h3>
-						<p>César Vallejo (2000-2001)</p>
-					</div>
 				</div>
 				<div class="edu-right">
 					<img id="edu-image" src="img/educacion_inicial.jpg" alt="Imagen de educación">
@@ -485,289 +756,6 @@
 		<span id="modal-close" class="modal-close">&times;</span>
 		<div id="modal-content" class="modal-content"></div>
 	</div>
-
-	<section id="proyectos">
-		<div class="parallax-bg"></div>
-		<div class="projects-overlay">
-			<h2>Proyectos Destacados</h2>
-			<p class="subtitle">
-				Explora mis trabajos más relevantes en <strong>desarrollo web</strong>, <strong>IA</strong>,
-				<strong>diseño 3D</strong> y más.
-			</p>
-			<div class="filters">
-				<button class="filter-btn active" data-filter="all">Todos</button>
-				<button class="filter-btn" data-filter="web">Web</button>
-				<button class="filter-btn" data-filter="ai">IA</button>
-				<button class="filter-btn" data-filter="games">Juegos</button>
-			</div>
-			<div class="projects-grid">
-				<div class="project-card" data-category="web">
-					<div class="project-inner">
-						<div class="project-front">
-							<img src="img/proyecto_web1.png" alt="Proyecto Web">
-							<div class="project-info">
-								<h3>EMPRESA RISAI</h3>
-								<p>
-									Proyecto empresarial centrado en la detección de rostros, comparación de objetos y
-									gestión de usuarios.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Incluye autenticación de usuarios, panel de administración y utilización de diversas
-								herramientas AWS.
-							</p>
-							<a href="#proyectos" class="btn-project">Recurso privado</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="project-card" data-category="games">
-					<div class="project-inner">
-						<div class="project-front">
-							<img src="img/proyecto_juegos1.gif" alt="Proyecto Juegos">
-							<div class="project-info">
-								<h3>MODELADO 3D</h3>
-								<p>
-									Centrado en la popular plataforma Minecraft. Modelo aracnido con animaciones y
-									estética única.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Incluye mundo personalizado, diálogos, ataques dinámicos e historial. Es un proyecto
-								ambicioso que actualmente está a la venta.
-							</p>
-							<a href="https://builtbybit.com/resources/survival-setup-and-arachnid-dimension.30343/"
-								target="_blank" class="btn-project">Ver producto</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="project-card" data-category="ai">
-					<div class="project-inner">
-						<div class="project-front">
-							<img src="img/proyecto_ia1.png" alt="Proyecto IA">
-							<div class="project-info">
-								<h3>PROYECTO IA</h3>
-								<p>
-									Gestor de predicciones, gráficos y algoritmos avanzados, ideal para la toma de
-									decisiones.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Cuenta con modelos entrenados de gran envergadura, capaces de adaptarse a todo tipo de
-								datos empresariales. Escalable y complementado con Excel y otras herramientas.
-							</p>
-							<a href="#proyectos" class="btn-project">Recurso privado</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="project-card" data-category="web">
-					<div class="project-inner">
-						<div class="project-front">
-							<img src="img/proyecto_web2.png" alt="Proyecto Web">
-							<div class="project-info">
-								<h3>CALENDARIO DINÁMICO</h3>
-								<p>
-									Sistema CRUD completo de eventos y fechas personalizables, desarrollado en Laravel
-									sin necesidad de APIs.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Incluye funciones avanzadas, rango de fechas, múltiples eventos, sistema de
-								notificaciones y está construido completamente en JavaScript, con alta escalabilidad.
-							</p>
-							<a href="#proyectos" class="btn-project">Recurso privado</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="project-card" data-category="web">
-					<div class="project-inner">
-						<div class="project-front">
-							<img src="img/proyecto_web3.png" alt="Proyecto Web">
-							<div class="project-info">
-								<h3>COMISIONES PERÚ</h3>
-								<p>
-									Visualización y gestión en tiempo real de comisiones, enfocado en empresas de
-									contabilidad y finanzas.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Grupo Wesc SAC presta servicios a diversas empresas en Perú. Cuenta con un equipo de
-								desarrolladores junior supervisado por mí.
-							</p>
-							<a href="https://grupowesc.com/" target="_blank" class="btn-project">Página web en curso</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="project-card" data-category="web">
-					<div class="project-inner">
-						<div class="project-front">
-							<img src="img/proyecto_web4.png" alt="Proyecto Web">
-							<div class="project-info">
-								<h3>GESTOR DE PLANILLAS</h3>
-								<p>
-									Sistema para la gestión integral de planillas en diversos ámbitos empresariales.
-									Incluye control de usuarios, empresas y categorías.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Desarrollado completamente en Laravel.
-							</p>
-							<a href="#proyectos" class="btn-project">Recurso privado</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="project-card" data-category="web">
-					<div class="project-inner">
-						<div class="project-front">
-							<img src="img/proyecto_web5.png" alt="Proyecto Web">
-							<div class="project-info">
-								<h3>GESTOR DE PRODUCTOS</h3>
-								<p>
-									Sistema para la gestión de productos, con aplicación de tarifas, inventarios,
-									códigos QR y más.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Incluye módulos de venta, facturación, cotización, multi-organización, APIs, envío de
-								correos electrónicos y soporte para múltiples empresas.
-							</p>
-							<a href="#proyectos" class="btn-project">Recurso privado</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="project-card" data-category="games">
-					<div class="project-inner">
-						<div class="project-front">
-							<video controls autoplay muted loop poster="img/proyecto_juegos2.mp4">
-								<source src="img/proyecto_juegos2.mp4" type="video/mp4">
-								Tu navegador no soporta el elemento video.
-							</video>
-							<div class="project-info">
-								<h3>ANIMACIONES Y EFECTOS</h3>
-								<p>
-									Control de efectos, sonidos, interacciones y uso de plugins públicos y privados.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Chat personalizado sin precedentes en la plataforma Minecraft. Sistema escalable y
-								adaptable a cualquier servidor.
-							</p>
-							<a href="https://www.youtube.com/watch?v=P_ri8a9hFFQ" target="_blank"
-								class="btn-project">Ver video</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="project-card" data-category="games">
-					<div class="project-inner">
-						<div class="project-front">
-							<video controls autoplay muted loop poster="">
-								<source src="" type="video/mp4">
-								Tu navegador no soporta el elemento video.
-							</video>
-							<div class="project-info">
-								<h3>AGREGANDO..</h3>
-								<p>
-									Actualmente estoy recopilando mas contenido.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Se actualizará pronto :)
-							</p>
-							<a href="" target="_blank"
-								class="btn-project">Pronto..</a>
-						</div>
-					</div>
-				</div>
-
-
-
-				<div class="project-card" data-category="ai">
-					<div class="project-inner">
-						<div class="project-front">
-							<video controls autoplay muted loop poster="">
-								<source src="" type="video/mp4">
-								Tu navegador no soporta el elemento video.
-							</video>
-							<div class="project-info">
-								<h3>AGREGANDO..</h3>
-								<p>
-									Actualmente estoy recopilando mas contenido.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Se actualizará pronto :)
-							</p>
-							<a href="" target="_blank"
-								class="btn-project">Pronto..</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="project-card" data-category="ai">
-					<div class="project-inner">
-						<div class="project-front">
-							<video controls autoplay muted loop poster="">
-								<source src="" type="video/mp4">
-								Tu navegador no soporta el elemento video.
-							</video>
-							<div class="project-info">
-								<h3>AGREGANDO..</h3>
-								<p>
-									Actualmente estoy recopilando mas contenido.
-								</p>
-							</div>
-						</div>
-						<div class="project-back">
-							<h3>Detalles</h3>
-							<p>
-								Se actualizará pronto :)
-							</p>
-							<a href="" target="_blank"
-								class="btn-project">Pronto..</a>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</section>
 
 	<section id="contact">
 		<div class="section-overlay">
