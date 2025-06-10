@@ -92,7 +92,7 @@ function initMascota() {
 function initIntersectionObserver() {
     const sections = document.querySelectorAll('section')
     const indicators = document.querySelectorAll('.section-indicators .indicator')
-    const observerOptions = { threshold: 0.3 }
+    const observerOptions = { threshold: 0.01 }
     const sectionObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             entry.target.classList.toggle('show', entry.isIntersecting)
@@ -189,19 +189,67 @@ function initEducationCards() {
 function initProyectos() {
     const filterButtons = document.querySelectorAll("#proyectos .filter-btn")
     const projectCards = Array.from(document.querySelectorAll("#proyectos .project-card"))
+    const projectsGrid = document.querySelector("#proyectos .projects-grid")
+    const projectsMainCard = document.querySelector(".projects-main-card")
+
+    function updateGridColumns() {
+        const visibleCards = projectCards.filter(card => {
+            const style = window.getComputedStyle(card)
+            return style.display !== "none"
+        })
+        const numCards = visibleCards.length
+
+        if (projectsGrid && numCards > 0) {
+            if (numCards <= 6) {
+                projectsGrid.style.gridTemplateRows = "200px"
+                projectsGrid.style.gridTemplateColumns = `repeat(${numCards}, 150px)`
+                projectsGrid.style.gridAutoFlow = "row"
+                visibleCards.forEach((card) => {
+                    card.style.order = ""
+                })
+            } else {
+                const numColumns = Math.ceil(numCards / 2)
+                projectsGrid.style.gridTemplateRows = "repeat(2, 200px)"
+                projectsGrid.style.gridTemplateColumns = `repeat(${numColumns}, 150px)`
+                projectsGrid.style.gridAutoFlow = "column"
+
+                visibleCards.forEach((card, index) => {
+                    card.style.order = Math.floor(index / 2) + (index % 2) * numColumns
+                })
+            }
+        }
+    }
+
+    if (projectsMainCard) {
+        projectsMainCard.addEventListener('wheel', (e) => {
+            e.preventDefault()
+            const scrollAmount = e.deltaY
+            projectsGrid.scrollLeft += scrollAmount
+        })
+    }
+
     filterButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             filterButtons.forEach(b => b.classList.remove("active"))
             btn.classList.add("active")
             const filterValue = btn.getAttribute("data-filter")
             const visibleCards = []
+
             projectCards.forEach(card => {
+                card.style.order = ""
                 const category = card.getAttribute("data-category")
                 if (filterValue === "all" || category === filterValue) {
                     card.style.display = "block"
                     visibleCards.push(card)
-                } else card.style.display = "none"
+                } else {
+                    card.style.display = "none"
+                }
             })
+
+            setTimeout(() => {
+                updateGridColumns()
+            }, 100)
+
             visibleCards.forEach((card, index) => {
                 card.style.transition = "transform 0.5s ease, opacity 0.5s ease"
                 card.style.transform = "translateX(-50px)"
@@ -214,6 +262,7 @@ function initProyectos() {
             })
         })
     })
+
     projectCards.forEach(card => {
         card.addEventListener("click", () => {
             if (card.style.display !== "none") {
@@ -228,6 +277,16 @@ function initProyectos() {
                 }
             }
         })
+    })
+    
+    if (projectsGrid) {
+        projectsGrid.style.display = "grid"
+    }
+
+    updateGridColumns()
+
+    window.addEventListener('resize', () => {
+        updateGridColumns()
     })
 }
 
@@ -300,14 +359,12 @@ function initContacto() {
 }
 
 function initParallax() {
-    // Aplica parallax a cada sección con fondo
     const parallaxSections = document.querySelectorAll('section[data-parallax], #hero, #proyectos, #experience, #education')
     function parallaxScroll() {
         const scrollY = window.scrollY || window.pageYOffset
         parallaxSections.forEach(section => {
             let bg = section.querySelector('.parallax-bg')
             if (!bg) return
-            // Parallax: mueve el fondo más lento que el scroll
             const speed = section.dataset.parallaxSpeed ? parseFloat(section.dataset.parallaxSpeed) : 0.4
             const offset = section.offsetTop
             const height = section.offsetHeight
@@ -325,7 +382,6 @@ function initParallax() {
 }
 
 function enhanceSectionOverlays() {
-    // Añade la clase show a overlays cuando la sección está visible
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             const overlay = entry.target.querySelector('.section-overlay, .section-overlay-about')
