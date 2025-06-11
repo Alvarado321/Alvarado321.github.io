@@ -94,15 +94,33 @@
 			<p class="subtitle">
 				Explora mis trabajos más relevantes en <strong>desarrollo web</strong>, <strong>IA</strong>,
 				<strong>diseño 3D</strong> y más.
-			</p>
-			<div class="filters">
+			</p>			<div class="filters">
 				<button class="filter-btn active" data-filter="all">Todos</button>
 				<button class="filter-btn" data-filter="web">Web</button>
 				<button class="filter-btn" data-filter="ai">IA</button>
 				<button class="filter-btn" data-filter="games">Juegos</button>
 			</div>
-			<div class="projects-main-card">
-				<div class="projects-grid">
+			<div class="projects-container">
+				<div class="project-preview">
+					<div class="preview-content">
+						<img id="preview-image" src="img/proyecto_web1.png" alt="Vista previa">
+						<div class="preview-info">
+							<h3 id="preview-title">EMPRESA RISAI</h3>
+							<p id="preview-description">
+								Proyecto empresarial centrado en la detección de rostros, comparación de objetos y
+								gestión de usuarios.
+							</p>
+							<div class="preview-details">
+								<p id="preview-details-text">
+									Incluye autenticación de usuarios, panel de administración y utilización de diversas
+									herramientas AWS.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="projects-main-card">
+					<div class="projects-grid">
 					<div class="project-card" data-category="web">
 						<div class="project-inner">
 							<div class="project-front">
@@ -520,14 +538,14 @@
 								<p>
 									Colección de códigos de ejemplo, tutoriales y ejercicios prácticos en varios
 									lenguajes de programación.
-								</p>
-								<a href="https://github.com/Alvarado321/Ejemplos-Practicas" target="_blank"
+								</p>								<a href="https://github.com/Alvarado321/Ejemplos-Practicas" target="_blank"
 									class="btn-project">Ver repositorio</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 	</section>
 
 	<section id="experience" class="experience-section" data-parallax data-parallax-speed="0.22">

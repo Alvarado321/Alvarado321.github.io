@@ -944,9 +944,81 @@ section:not(.show) .section-overlay-about {
     color: #fff;
 }
 
+/* Contenedor principal de proyectos */
+.projects-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* Vista previa grande del lado izquierdo */
+.project-preview {
+    flex: 0 0 400px;
+    background: var(--color-bg-secondary);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--color-accent);
+    height: 500px;
+    position: sticky;
+    top: 120px;
+}
+
+.preview-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#preview-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--color-accent);
+}
+
+.preview-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+}
+
+#preview-title {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    margin: 0;
+    font-weight: bold;
+}
+
+#preview-description {
+    font-size: 1rem;
+    color: var(--color-text);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.preview-details {
+    border-top: 1px solid var(--color-accent);
+    padding-top: 15px;
+    margin-top: auto;
+}
+
+#preview-details-text {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
 #proyectos .projects-grid {
     display: grid;
-    grid-template-rows: repeat(2, 200px);
+    grid-template-rows: repeat(2, 220px);
     grid-auto-flow: column;
     grid-auto-columns: 150px;
     gap: 10px;
@@ -967,15 +1039,13 @@ section:not(.show) .section-overlay-about {
 }
 
 .projects-main-card {
-    width: min(1100px, 90vw);
-    max-width: 1100px;
-    height: 470px;
+    flex: 1;
     background: var(--color-bg-secondary);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    margin: 0 auto;
     overflow: hidden;
     border: 2px solid var(--color-accent);
+    height: 500px;
 }
 
 #proyectos .project-card {
@@ -985,7 +1055,7 @@ section:not(.show) .section-overlay-about {
     position: relative;
     transition: transform var(--transition-base);
     transform-style: preserve-3d;
-    height: 200px;
+    height: 220px;
     width: 150px;
     cursor: pointer;
     opacity: 1;
@@ -1024,7 +1094,7 @@ section:not(.show) .section-overlay-about {
 #proyectos .project-front img,
 #proyectos .project-front video {
     width: 100%;
-    height: 40%;
+    height: 50%;
     object-fit: cover;
 }
 
@@ -1529,13 +1599,25 @@ footer {
 
     #proyectos h2 {
         font-size: 1.8rem;
-    }
-
-    #proyectos .filters {
+    }    #proyectos .filters {
         margin-bottom: 20px;
     }
 
+    /* Layout responsivo para proyectos */
+    .projects-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .project-preview {
+        flex: none;
+        position: relative;
+        top: auto;
+        height: 300px;
+    }
+
     .projects-main-card {
+        flex: none;
         width: 90vw;
         height: 400px;
         max-width: 600px;

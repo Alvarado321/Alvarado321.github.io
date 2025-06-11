@@ -222,6 +222,39 @@ function initProyectos() {
     const projectsGrid = document.querySelector("#proyectos .projects-grid")
     const projectsMainCard = document.querySelector(".projects-main-card")
 
+    // Elementos de la vista previa
+    const previewImage = document.getElementById('preview-image')
+    const previewTitle = document.getElementById('preview-title')
+    const previewDescription = document.getElementById('preview-description')
+    const previewDetailsText = document.getElementById('preview-details-text')
+
+    function updatePreview(card) {
+        const frontImg = card.querySelector('.project-front img')
+        const frontVideo = card.querySelector('.project-front video')
+        const title = card.querySelector('.project-info h3').textContent
+        const description = card.querySelector('.project-info p').textContent
+        const backContent = card.querySelector('.project-back p').textContent
+        const link = card.querySelector('.btn-project')
+
+        if (frontImg) {
+            previewImage.src = frontImg.src
+            previewImage.style.display = 'block'
+        } else if (frontVideo) {
+            previewImage.src = frontVideo.poster || 'img/not_found.png'
+            previewImage.style.display = 'block'
+        }
+
+        previewTitle.textContent = title
+        previewDescription.textContent = description
+        previewDetailsText.textContent = backContent
+        
+        if (link) {
+            previewLink.href = link.href
+            previewLink.textContent = link.textContent
+            previewLink.target = link.target || '_self'
+        }
+    }
+
     function updateGridColumns() {
         const visibleCards = projectCards.filter(card => {
             const style = window.getComputedStyle(card)
@@ -258,6 +291,33 @@ function initProyectos() {
         })
     }
 
+    // Agregar eventos hover a las tarjetas
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            updatePreview(card)
+        })
+
+        card.addEventListener("click", () => {
+            if (card.style.display !== "none") {
+                const img = card.querySelector(".project-front img")
+                if (img) openModal(img.src, false)
+                else {
+                    const video = card.querySelector(".project-front video")
+                    if (video) {
+                        const source = video.querySelector("source")
+                        if (source) openModal(source.src, true)
+                    }
+                }
+            }
+        })
+    })
+
+    // Inicializar preview con la primera tarjeta visible
+    const firstVisibleCard = projectCards.find(card => window.getComputedStyle(card).display !== "none")
+    if (firstVisibleCard) {
+        updatePreview(firstVisibleCard)
+    }
+
     filterButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             filterButtons.forEach(b => b.classList.remove("active"))
@@ -278,6 +338,11 @@ function initProyectos() {
 
             setTimeout(() => {
                 updateGridColumns()
+                // Actualizar preview con la primera tarjeta visible después del filtro
+                const firstVisibleCard = visibleCards[0]
+                if (firstVisibleCard) {
+                    updatePreview(firstVisibleCard)
+                }
             }, 100)
 
             visibleCards.forEach((card, index) => {
@@ -290,22 +355,6 @@ function initProyectos() {
                     card.style.opacity = "1"
                 }, index * 100)
             })
-        })
-    })
-
-    projectCards.forEach(card => {
-        card.addEventListener("click", () => {
-            if (card.style.display !== "none") {
-                const img = card.querySelector(".project-front img")
-                if (img) openModal(img.src, false)
-                else {
-                    const video = card.querySelector(".project-front video")
-                    if (video) {
-                        const source = video.querySelector("source")
-                        if (source) openModal(source.src, true)
-                    }
-                }
-            }
         })
     })
 
