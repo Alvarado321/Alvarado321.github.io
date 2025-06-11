@@ -92,19 +92,49 @@ function initMascota() {
 function initIntersectionObserver() {
     const sections = document.querySelectorAll('section')
     const indicators = document.querySelectorAll('.section-indicators .indicator')
-    const observerOptions = { threshold: 0.01 }
+    
+    function updateActiveSection() {
+        const scrollPosition = window.scrollY + window.innerHeight / 2
+        let activeSection = null
+        let minDistance = Infinity
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop
+            const sectionBottom = sectionTop + section.offsetHeight
+            const sectionCenter = sectionTop + section.offsetHeight / 2
+            
+            if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
+                const distance = Math.abs(scrollPosition - sectionCenter)
+                if (distance < minDistance) {
+                    minDistance = distance
+                    activeSection = section
+                }
+            }
+        })
+        
+        indicators.forEach(indicator => {
+            indicator.classList.remove('active')
+            if (activeSection && indicator.getAttribute('href') === '#' + activeSection.id) {
+                indicator.classList.add('active')
+            }
+        })
+    }
+    
+    const observerOptions = { threshold: [0.1, 0.5, 0.9] }
     const sectionObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             entry.target.classList.toggle('show', entry.isIntersecting)
-            indicators.forEach(indicator => {
-                indicator.classList.toggle('active', indicator.getAttribute('href') === '#' + entry.target.id && entry.isIntersecting)
-            })
         })
+        updateActiveSection()
     }, observerOptions)
+    
     sections.forEach(section => {
         section.classList.add('hidden')
         sectionObserver.observe(section)
     })
+    
+    window.addEventListener('scroll', updateActiveSection)
+    updateActiveSection()
 }
 
 function initScrollToTop() {
@@ -278,7 +308,7 @@ function initProyectos() {
             }
         })
     })
-    
+
     if (projectsGrid) {
         projectsGrid.style.display = "grid"
     }

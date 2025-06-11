@@ -951,12 +951,13 @@ section:not(.show) .section-overlay-about {
     grid-auto-columns: 150px;
     gap: 10px;
     padding: 15px;
+    margin: 15px;
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     height: calc(100% - 30px);
-    width: 100%;
+    /* width: 100%; */
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
@@ -968,7 +969,7 @@ section:not(.show) .section-overlay-about {
 .projects-main-card {
     width: min(1100px, 90vw);
     max-width: 1100px;
-    height: 460px;
+    height: 470px;
     background: var(--color-bg-secondary);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
