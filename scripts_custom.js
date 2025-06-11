@@ -36,17 +36,17 @@ function initThreeJS() {
 function initMascota() {
     const petFrames = {
         idle: [
-            'https://via.placeholder.com/100x100/CCCCCC/000000?text=idle1',
-            'https://via.placeholder.com/100x100/BBBBBB/000000?text=idle2'
+            'https://cdn.pixabay.com/photo/2017/01/06/19/15/dog-1959906_1280.png',
+            'https://cdn.pixabay.com/photo/2016/02/19/10/00/dog-1207816_1280.png'
         ],
         run: [
-            'https://via.placeholder.com/100x100/FFCCCC/000000?text=run1',
-            'https://via.placeholder.com/100x100/FFAAAA/000000?text=run2',
-            'https://via.placeholder.com/100x100/FF8888/000000?text=run3'
+            'https://cdn.pixabay.com/photo/2017/01/31/13/14/dog-2029214_1280.png',
+            'https://cdn.pixabay.com/photo/2016/02/19/10/00/dog-1207816_1280.png',
+            'https://cdn.pixabay.com/photo/2017/01/06/19/15/dog-1959906_1280.png'
         ],
         jump: [
-            'https://via.placeholder.com/100x100/CCFFCC/000000?text=jump1',
-            'https://via.placeholder.com/100x100/AAFFAA/000000?text=jump2'
+            'https://cdn.pixabay.com/photo/2017/01/31/13/14/dog-2029214_1280.png',
+            'https://cdn.pixabay.com/photo/2017/01/06/19/15/dog-1959906_1280.png'
         ]
     }
     const pet = {
@@ -92,17 +92,17 @@ function initMascota() {
 function initIntersectionObserver() {
     const sections = document.querySelectorAll('section')
     const indicators = document.querySelectorAll('.section-indicators .indicator')
-    
+
     function updateActiveSection() {
         const scrollPosition = window.scrollY + window.innerHeight / 2
         let activeSection = null
         let minDistance = Infinity
-        
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop
             const sectionBottom = sectionTop + section.offsetHeight
             const sectionCenter = sectionTop + section.offsetHeight / 2
-            
+
             if (scrollPosition >= sectionTop && scrollPosition <= sectionBottom) {
                 const distance = Math.abs(scrollPosition - sectionCenter)
                 if (distance < minDistance) {
@@ -111,7 +111,7 @@ function initIntersectionObserver() {
                 }
             }
         })
-        
+
         indicators.forEach(indicator => {
             indicator.classList.remove('active')
             if (activeSection && indicator.getAttribute('href') === '#' + activeSection.id) {
@@ -119,7 +119,7 @@ function initIntersectionObserver() {
             }
         })
     }
-    
+
     const observerOptions = { threshold: [0.1, 0.5, 0.9] }
     const sectionObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -127,12 +127,12 @@ function initIntersectionObserver() {
         })
         updateActiveSection()
     }, observerOptions)
-    
+
     sections.forEach(section => {
         section.classList.add('hidden')
         sectionObserver.observe(section)
     })
-    
+
     window.addEventListener('scroll', updateActiveSection)
     updateActiveSection()
 }
@@ -221,12 +221,11 @@ function initProyectos() {
     const projectCards = Array.from(document.querySelectorAll("#proyectos .project-card"))
     const projectsGrid = document.querySelector("#proyectos .projects-grid")
     const projectsMainCard = document.querySelector(".projects-main-card")
-
-    // Elementos de la vista previa
     const previewImage = document.getElementById('preview-image')
     const previewTitle = document.getElementById('preview-title')
     const previewDescription = document.getElementById('preview-description')
     const previewDetailsText = document.getElementById('preview-details-text')
+    const previewLink = document.getElementById('preview-link')
 
     function updatePreview(card) {
         const frontImg = card.querySelector('.project-front img')
@@ -236,22 +235,47 @@ function initProyectos() {
         const backContent = card.querySelector('.project-back p').textContent
         const link = card.querySelector('.btn-project')
 
-        if (frontImg) {
+        if (frontVideo) {
+            previewImage.style.display = 'none'
+            let previewVideo = document.getElementById('preview-video')
+            if (!previewVideo) {
+                previewVideo = document.createElement('video')
+                previewVideo.id = 'preview-video'
+                previewVideo.style.width = '100%'
+                previewVideo.style.height = '200px'
+                previewVideo.style.objectFit = 'cover'
+                previewVideo.style.borderBottom = '2px solid var(--color-accent)'
+                previewVideo.controls = true
+                previewVideo.muted = true
+                previewVideo.loop = true
+                previewVideo.autoplay = true
+                previewImage.parentNode.insertBefore(previewVideo, previewImage)
+            }
+            const source = frontVideo.querySelector('source')
+            if (source) {
+                previewVideo.src = source.src
+                previewVideo.style.display = 'block'
+            }
+        } else if (frontImg) {
+            const previewVideo = document.getElementById('preview-video')
+            if (previewVideo) {
+                previewVideo.style.display = 'none'
+            }
             previewImage.src = frontImg.src
             previewImage.style.display = 'block'
-        } else if (frontVideo) {
-            previewImage.src = frontVideo.poster || 'img/not_found.png'
-            previewImage.style.display = 'block'
-        }
-
+        } 
+        
         previewTitle.textContent = title
         previewDescription.textContent = description
         previewDetailsText.textContent = backContent
-        
-        if (link) {
+
+        if (link && previewLink) {
             previewLink.href = link.href
             previewLink.textContent = link.textContent
             previewLink.target = link.target || '_self'
+            previewLink.style.display = 'inline-block'
+        } else if (previewLink) {
+            previewLink.style.display = 'none'
         }
     }
 
@@ -263,23 +287,26 @@ function initProyectos() {
         const numCards = visibleCards.length
 
         if (projectsGrid && numCards > 0) {
+            projectCards.forEach(card => {
+                card.style.order = ""
+            })
+
             if (numCards <= 6) {
-                projectsGrid.style.gridTemplateRows = "200px"
-                projectsGrid.style.gridTemplateColumns = `repeat(${numCards}, 150px)`
-                projectsGrid.style.gridAutoFlow = "row"
-                visibleCards.forEach((card) => {
-                    card.style.order = ""
-                })
+                projectsGrid.style.gridTemplateRows = "repeat(2, 220px)"
+                projectsGrid.style.gridTemplateColumns = `repeat(${Math.ceil(numCards / 2)}, 150px)`
+                projectsGrid.style.gridAutoFlow = "column"
             } else {
                 const numColumns = Math.ceil(numCards / 2)
-                projectsGrid.style.gridTemplateRows = "repeat(2, 200px)"
+                projectsGrid.style.gridTemplateRows = "repeat(2, 220px)"
                 projectsGrid.style.gridTemplateColumns = `repeat(${numColumns}, 150px)`
                 projectsGrid.style.gridAutoFlow = "column"
-
-                visibleCards.forEach((card, index) => {
-                    card.style.order = Math.floor(index / 2) + (index % 2) * numColumns
-                })
             }
+
+            visibleCards.forEach((card, index) => {
+                const column = Math.floor(index / 2)
+                const row = index % 2
+                card.style.order = column * 2 + row
+            })
         }
     }
 
@@ -291,7 +318,6 @@ function initProyectos() {
         })
     }
 
-    // Agregar eventos hover a las tarjetas
     projectCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
             updatePreview(card)
@@ -312,13 +338,10 @@ function initProyectos() {
         })
     })
 
-    // Inicializar preview con la primera tarjeta visible
     const firstVisibleCard = projectCards.find(card => window.getComputedStyle(card).display !== "none")
     if (firstVisibleCard) {
         updatePreview(firstVisibleCard)
-    }
-
-    filterButtons.forEach(btn => {
+    } filterButtons.forEach(btn => {
         btn.addEventListener("click", () => {
             filterButtons.forEach(b => b.classList.remove("active"))
             btn.classList.add("active")
@@ -327,18 +350,23 @@ function initProyectos() {
 
             projectCards.forEach(card => {
                 card.style.order = ""
+                card.style.transition = ""
+                card.style.transform = ""
+                card.style.opacity = ""
+
                 const category = card.getAttribute("data-category")
                 if (filterValue === "all" || category === filterValue) {
                     card.style.display = "block"
+                    card.style.visibility = "visible"
                     visibleCards.push(card)
                 } else {
                     card.style.display = "none"
+                    card.style.visibility = "hidden"
                 }
             })
 
             setTimeout(() => {
                 updateGridColumns()
-                // Actualizar preview con la primera tarjeta visible después del filtro
                 const firstVisibleCard = visibleCards[0]
                 if (firstVisibleCard) {
                     updatePreview(firstVisibleCard)
@@ -398,21 +426,45 @@ function openModal(src, isVideo) {
 function closeModal() {
     const modal = document.getElementById("modal")
     const modalContentContainer = document.getElementById("modal-content")
-    const videoEl = modalContentContainer.querySelector("video")
-    if (videoEl) {
-        videoEl.pause()
-        videoEl.currentTime = 0
+
+    if (modalContentContainer) {
+        const videoEl = modalContentContainer.querySelector("video")
+        if (videoEl) {
+            videoEl.pause()
+            videoEl.currentTime = 0
+        }
+        modalContentContainer.innerHTML = ""
     }
-    modal.style.display = "none"
-    modalContentContainer.innerHTML = ""
+
+    if (modal) {
+        modal.style.display = "none"
+    }
 }
 
 function initModal() {
     const modal = document.getElementById("modal")
     const closeBtn = document.getElementById("modal-close")
-    closeBtn.addEventListener("click", closeModal)
-    modal.addEventListener("click", e => {
-        if (e.target === modal) closeModal()
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", (e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            closeModal()
+        })
+    }
+
+    if (modal) {
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                closeModal()
+            }
+        })
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closeModal()
+        }
     })
 }
 

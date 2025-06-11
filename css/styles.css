@@ -1016,6 +1016,23 @@ section:not(.show) .section-overlay-about {
     opacity: 0.8;
 }
 
+#preview-link {
+    display: inline-block;
+    background: var(--color-accent);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    font-weight: bold;
+}
+
+#preview-link:hover {
+    background: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
 #proyectos .projects-grid {
     display: grid;
     grid-template-rows: repeat(2, 220px);
@@ -1029,13 +1046,20 @@ section:not(.show) .section-overlay-about {
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     height: calc(100% - 30px);
-    /* width: 100%; */
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
 #proyectos .projects-grid::-webkit-scrollbar {
     display: none;
+}
+
+#proyectos .project-card[style*="display: none"] {
+    display: none !important;
+}
+
+#proyectos .project-card[style*="display: block"] {
+    display: block !important;
 }
 
 .projects-main-card {
@@ -1176,7 +1200,8 @@ section:not(.show) .section-overlay-about {
     background-color: rgba(0, 0, 0, 0.9);
     padding: 40px;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: auto;
+    cursor: pointer;
 }
 
 .modal-content {
@@ -1184,6 +1209,10 @@ section:not(.show) .section-overlay-about {
     display: block;
     max-width: calc(100% - 80px);
     max-height: calc(100% - 80px);
+    cursor: default;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .modal-content img,
@@ -1191,6 +1220,8 @@ section:not(.show) .section-overlay-about {
     width: 100%;
     height: auto;
     display: block;
+    max-height: 80vh;
+    object-fit: contain;
 }
 
 .modal-close {
@@ -1202,6 +1233,14 @@ section:not(.show) .section-overlay-about {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    z-index: 10000;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-close:hover,
@@ -1599,7 +1638,9 @@ footer {
 
     #proyectos h2 {
         font-size: 1.8rem;
-    }    #proyectos .filters {
+    }
+
+    #proyectos .filters {
         margin-bottom: 20px;
     }
 
