@@ -236,7 +236,7 @@ function initProyectos() {
         const link = card.querySelector('.btn-project')
 
         if (frontVideo) {
-            previewImage.style.display = 'none'
+            if (previewImage) previewImage.style.display = 'none'
             let previewVideo = document.getElementById('preview-video')
             if (!previewVideo) {
                 previewVideo = document.createElement('video')
@@ -249,7 +249,9 @@ function initProyectos() {
                 previewVideo.muted = true
                 previewVideo.loop = true
                 previewVideo.autoplay = true
-                previewImage.parentNode.insertBefore(previewVideo, previewImage)
+                if (previewImage && previewImage.parentNode) {
+                    previewImage.parentNode.insertBefore(previewVideo, previewImage)
+                }
             }
             const source = frontVideo.querySelector('source')
             if (source) {
@@ -261,13 +263,15 @@ function initProyectos() {
             if (previewVideo) {
                 previewVideo.style.display = 'none'
             }
-            previewImage.src = frontImg.src
-            previewImage.style.display = 'block'
-        } 
-        
-        previewTitle.textContent = title
-        previewDescription.textContent = description
-        previewDetailsText.textContent = backContent
+            if (previewImage) {
+                previewImage.src = frontImg.src
+                previewImage.style.display = 'block'
+            }
+        }
+
+        if (previewTitle) previewTitle.textContent = title
+        if (previewDescription) previewDescription.textContent = description
+        if (previewDetailsText) previewDetailsText.textContent = backContent
 
         if (link && previewLink) {
             previewLink.href = link.href
